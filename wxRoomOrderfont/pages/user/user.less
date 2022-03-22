@@ -1,0 +1,85 @@
+#backimage{
+    width: calc(750rpx*375/375);
+    height:50vh;
+
+}
+#imagemask{
+    width: calc(750rpx*375/375);
+    height:50vh;
+    background:linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(121, 121, 121, 0));
+    position: absolute;
+    top:0;
+    text{
+        display: block;
+        color:rgb(255,255,255);
+        margin-left: calc(750rpx*30/375);
+        font-weight: bolder;
+        font-family: "Arial Narrow";
+        font-size: 70rpx;
+        line-height: 95rpx;
+    }
+    #textlineone{
+        margin-top: calc(750rpx*70/375);
+        font-size: 78rpx;
+    }
+}
+#loginhead{
+    background-color: rgb(255, 255, 255);
+    height: 62vh;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    border-top-right-radius: 80rpx;
+    border-top-left-radius: 80rpx;
+    #logintext{
+        display: block;
+        color:rgb(71, 38, 52);
+        margin-left: calc(750rpx*30/375);
+        font-weight: 550;
+        margin-top: calc(750rpx*20/375);
+        font-family: "Franklin Gothic Medium";
+        font-size: 65rpx;
+        line-height: 95rpx;
+    }
+    #usericon{
+        display: flex;
+        justify-content: center;
+        margin-top: 3vh; 
+        view{
+            width: 35vw;
+            height: 35vw;
+            border-radius: 50%;
+            border: 2px solid #fff;  
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);  
+            overflow: hidden;
+        }
+    }
+    #usernickname{
+        display: flex;
+        justify-content: center;
+        height: 7vh;
+        margin-top: 1.5vh; 
+        width: 100%;
+        font-size: 5vw;
+        #userNickName{
+            color:rgb(71, 38, 52);
+            height: 7vh;
+            font-size:medium;
+        }
+    }
+    
+    button{
+        width: calc(750rpx*(253)/375);
+        height: calc(750rpx*(48)/375);
+        background-color: rgb(245, 71, 100);
+        color: #fff;
+        font-size: 38rpx;
+        font-weight: 300;
+        border-radius: 100rpx;
+        box-shadow: rgb(255, 206, 214) 0 4rpx 10rpx 5rpx ;
+        margin-top: 1vh;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
