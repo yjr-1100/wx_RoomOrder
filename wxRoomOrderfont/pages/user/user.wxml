@@ -1,18 +1,76 @@
-<image id="backimage" src="../../Images/loginbackground_classroom.jpg" mode="scaleToFill"/>
-<view id="imagemask" hover-class="none" hover-stop-propagation="false">
-    <text id="textlineone" selectable="false" space="false" decode="false">Welcome to</text>
+<view wx:if="{{!true}}" class="" hover-class="none" hover-stop-propagation="false">
+    <image id="backimage" src="../../Images/loginbackground_classroom.jpg" mode="scaleToFill"/>
+    <view id="imagemask" hover-class="none" hover-stop-propagation="false">
+        <text id="textlineone" selectable="false" space="false" decode="false">Welcome to</text>
 
-    <text class="" selectable="false" space="false" decode="false">RoomOrder</text>
+        <text class="" selectable="false" space="false" decode="false">RoomOrder</text>
+    </view>
+    <view id="loginhead" hover-class="none" hover-stop-propagation="false">
+        <text id="logintext" selectable="false" space="false" decode="false">登录</text>
+        <view id="usericon" hover-class="none" hover-stop-propagation="false">
+            <view class="" hover-class="none" hover-stop-propagation="false">
+                <open-data  type="userAvatarUrl"></open-data>
+            </view>
+        </view>
+        <view id="usernickname" hover-class="none" hover-stop-propagation="false">
+            <open-data type="userNickName"></open-data>
+        </view>
+        <button bindtap="getUserProfile">使用微信快速登录</button>
+    </view>
 </view>
-<view id="loginhead" hover-class="none" hover-stop-propagation="false">
-    <text id="logintext" selectable="false" space="false" decode="false">登录</text>
-    <view id="usericon" hover-class="none" hover-stop-propagation="false">
-        <view class="" hover-class="none" hover-stop-propagation="false">
-            <open-data  type="userAvatarUrl"></open-data>
+<view wx:else>
+    <view class="userhome" hover-class="none" hover-stop-propagation="false">
+        <view class="userhead" hover-class="none" hover-stop-propagation="false">
+            <image id="userbackimage" src="../../Images/userbackground_classroom_1.jpg" mode="scaleToFill"/>
+            <view id="userimagemask" hover-class="none" hover-stop-propagation="false"></view>
+            <view class="" hover-class="none" hover-stop-propagation="false">
+                <view id="userinfoicon" hover-class="none" hover-stop-propagation="false">
+                    <image class="" src="../../Images/userbackground_classroom_1.jpg" mode="scaleToFill" lazy-load="false" binderror="" bindload="">
+                    </image>
+                </view>
+                <view class="userinfoname" hover-class="none" hover-stop-propagation="false">
+                    <!-- <text class="iconfont icon-iconfontzhizuobiaozhun023114"></text> -->
+                    <text wx:if="" id="renzheng" class="iconfont icon-xinxirenzheng"></text>
+                    <text wx:else id="weirenzheng" class="iconfont icon-weirenzheng1"></text>
+                    别人走心我走神
+                </view>
+                
+            </view>
+            </view>
+        <view id="useroption" hover-class="none" hover-stop-propagation="false">
+            <view class="myorder">
+                <text class="iconfont icon-yuyue"></text>
+                我的预约
+                <text class="jiantou iconfont icon-jiantouyou"></text>
+            </view>
+            <view >
+                <text id="iconger" class="iconfont icon-gerenxinxi-"></text>
+                个人信息
+                <text class="jiantou iconfont icon-jiantouyou"></text>
+
+            </view>
+            <view class="">
+                <text id="yuyueguize"class="iconfont icon-bianmaguize"></text>
+                预约须知
+                <text class="jiantou iconfont icon-jiantouyou"></text>
+
+            </view>
+            <view class="verifyincome">
+                <!-- <view ><text class="iconfont icon-weirenzheng1"></text></view> -->
+                <text wx:if="" id="iconrenzhen"class="iconfont icon-xinxirenzheng"></text>
+                <text wx:else id="iconweirenzheng" class="iconfont icon-weirenzheng1"></text>
+                
+                身份认证
+                <text class="jiantou iconfont icon-jiantouyou"></text>
+
+            </view>
+            <view class="">
+                <text id=""class="iconfont icon-kefu"></text>
+                联系客服
+                <text class="jiantou iconfont icon-jiantouyou"></text>
+
+            </view>
+
         </view>
     </view>
-    <view id="usernickname" hover-class="none" hover-stop-propagation="false">
-        <open-data type="userNickName"></open-data>
-    </view>
-    <button>使用微信快速登录</button>
 </view>

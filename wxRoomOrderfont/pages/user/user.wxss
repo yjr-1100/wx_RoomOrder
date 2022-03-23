@@ -81,3 +81,108 @@
   align-items: center;
   justify-content: center;
 }
+.userhome {
+  position: relative;
+  margin: 2vw 8vw 0 8vw;
+}
+.userhome .userhead {
+  background-color: #fff;
+  width: 100%;
+  border-radius: 5vw;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}
+.userhome .userhead #userbackimage {
+  width: 100%;
+  height: 35vh;
+  border-radius: 5vw;
+}
+.userhome .userhead #userimagemask {
+  width: 100%;
+  height: 35vh;
+  border-radius: 5vw;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(128, 128, 128, 0.075));
+  position: absolute;
+  top: 0;
+}
+.userhome .userhead view {
+  position: relative;
+  padding: 1rpx 0 ;
+}
+.userhome .userhead view #userinfoicon {
+  position: absolute;
+  top: -32vw;
+  left: 24.5vw;
+  width: 35vw;
+  height: 35vw;
+  border-radius: 50%;
+  border: 2vw solid #fff;
+  overflow: hidden;
+}
+.userhome .userhead view #userinfoicon image {
+  width: 100%;
+  height: 100%;
+}
+.userhome .userhead view .userinfoname {
+  color: #472634;
+  margin: 2vw 8vw 3vw 3vw;
+  font-weight: 550;
+  text-align: center;
+  font-family: "Franklin Gothic Medium";
+  font-size: 6.3vw;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.userhome .userhead view .userinfoname text {
+  font-size: 6.5vw;
+  text-align: center;
+  font-weight: 600;
+}
+.userhome .userhead view .userinfoname #weirenzheng {
+  color: #d41900;
+}
+.userhome .userhead view .userinfoname #renzheng {
+  color: #00b21e;
+}
+.userhome .userhead view .userverify {
+  display: flex;
+  margin: 0 18vw 0 18vw;
+  width: 100%;
+}
+.userhome #useroption {
+  background-color: #fff;
+  width: 100%;
+  border-radius: 5vw;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  padding-top: 1rpx;
+  margin: 5vw 0;
+}
+.userhome #useroption view {
+  display: flex;
+  align-items: center;
+  color: #472634;
+  height: 15vw;
+  padding-left: 5vw;
+  font-size: 4.2vw;
+  border-bottom: #d6d6d6 2rpx solid;
+}
+.userhome #useroption view text {
+  margin-right: 3vw;
+  font-weight: 600;
+}
+.userhome #useroption view .jiantou {
+  position: absolute;
+  right: 4vw;
+}
+.userhome #useroption view #yuyueguize {
+  color: #16c2c2;
+}
+.userhome #useroption view #iconger {
+  color: #705ee6;
+}
+.userhome #useroption view #iconrenzhen {
+  color: #00b21e;
+}
+.userhome #useroption view #iconweirenzheng {
+  color: #bb1903;
+}

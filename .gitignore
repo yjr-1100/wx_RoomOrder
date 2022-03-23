@@ -3,3 +3,4 @@ testdata.txt
 roomphoto/
 migrations/
 RoomOrderbackend/wxappsetting.json
+RoomOrderbackend/test.py

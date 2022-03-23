@@ -83,3 +83,117 @@
         justify-content: center;
     }
 }
+
+.userhome{
+    position: relative;
+    margin: 2vw 8vw 0 8vw;
+    .userhead{
+        background-color: #fff;
+        width: 100%;
+        border-radius: 5vw;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);  
+
+        #userbackimage{
+            width: 100%;
+            height:35vh;
+            border-radius: 5vw;
+        }
+        #userimagemask{
+            width: 100%;
+            height:35vh;
+            border-radius: 5vw;
+            background:linear-gradient(rgba(0, 0, 0, 0.8), rgba(128, 128, 128, 0.075));
+            position: absolute;
+            top:0;
+        }
+        view{
+            position: relative;
+            padding:1rpx 0 ;
+            #userinfoicon{
+                position:absolute;
+                top: -32vw;
+                left: 24.5vw;
+                width: 35vw;
+                height: 35vw;
+                border-radius: 50%;
+                border: 2vw solid #fff;  
+                // box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);  
+                overflow: hidden;
+                image{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .userinfoname{
+                color:rgb(71, 38, 52);
+                margin: 2vw 8vw 3vw 3vw;
+                font-weight: 550;
+                text-align: center;
+                font-family: "Franklin Gothic Medium";
+                font-size: 6.3vw;
+                overflow: hidden;
+                white-space:nowrap;
+                text-overflow:ellipsis;
+                text{
+                    font-size:  6.5vw;
+                    text-align: center;
+                    font-weight: 600;
+                }
+                #weirenzheng{
+                    color: rgb(212, 25, 0);
+                }
+                #renzheng{
+                    color: rgb(0, 178, 30);
+                }
+            }
+            .userverify{
+                display: flex;
+                margin: 0 18vw 0 18vw;
+                width: 100%;
+                view{
+                    .icon-weibiaoti1012{
+                    }
+                }
+            }
+        }
+    }
+    
+    #useroption{
+        background-color: #fff;
+        width: 100%;
+        border-radius: 5vw;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);  
+        padding-top: 1rpx;
+        margin: 5vw 0;
+        view{
+            display: flex;
+            align-items: center;
+            color:rgb(71, 38, 52);
+            height: 15vw;
+            padding-left: 5vw;
+            font-size: 4.2vw;
+            border-bottom: rgb(214, 214, 214) 2rpx solid;
+            text{
+                margin-right: 3vw;
+                font-weight: 600;
+            }
+            .jiantou{
+                position: absolute;
+                right: 4vw;
+            }
+            #yuyueguize{
+                color: rgb(22, 194, 194);
+            }
+            
+            #iconger{
+                color:rgb(112, 94, 230);
+            }
+            #iconrenzhen{
+                color: rgb(0, 178, 30);
+            }
+            #iconweirenzheng{
+                color:rgb(187, 25, 3);
+            }
+        }
+    }
+}

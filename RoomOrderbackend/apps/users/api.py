@@ -4,7 +4,7 @@
 # @Author: YJR-1100
 # @Date: 2022-03-22 16:15:12
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-03-23 11:21:29
+# @LastEditTime: 2022-03-23 20:35:51
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\apps\users\api.py
 # @Description: 
 # @
@@ -23,14 +23,15 @@ user_bp = Blueprint('users',__name__)
 
 @user_bp.route('/getopenid',methods=['GET'])
 def getOpenId():
+    code = request.args.get('code')
     code2session_url = "https://api.weixin.qq.com/sns/jscode2session"
     data = {
         "appid" : settings.wxappConfig.appid,
         "secret" : settings.wxappConfig.appsecret,
-        "js_code":"013ceh200JTJuN1iYz1009eU0V3ceh2w",
+        "js_code": code,
         "grant_type":"authorization_code"
     }
     # parameters
     r = requests.get(code2session_url,params=data)
-        
-    return r
+    print(r.json())
+    return r.json()

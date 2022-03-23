@@ -1,4 +1,14 @@
 /**app.wxss**/
+@import "./styles/iconfont.wxss";
+page,view,text,swiper,weip-item,image,navigator{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+page{
+  background-color: rgb(248, 248, 248);
+}
 .container {
   height: 100%;
   display: flex;
