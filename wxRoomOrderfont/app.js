@@ -19,8 +19,9 @@ App({
       success (res) {
         if (res.code) {
           //发起网络请求
+          console.log(res.code);
           wx.request({
-            url: 'https://example.com/onLogin',
+            url: 'http://127.0.0.1:5000/api/v1/getopenid',
             data: {
               code: res.code
             }

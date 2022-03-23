@@ -4,7 +4,7 @@
 # @Author: YJR-1100
 # @Date: 2022-03-22 16:15:12
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-03-22 17:10:50
+# @LastEditTime: 2022-03-23 11:21:29
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\apps\users\api.py
 # @Description: 
 # @
@@ -13,26 +13,24 @@
 
 from flask import Blueprint,request,redirect,render_template,url_for
 from apps.users.models import Users
+import settings 
 import hashlib
 from exts import db
 from sqlalchemy import or_
+import requests
 user_bp = Blueprint('users',__name__)
 
 
-@user_bp.route('/getopenid',methods=['GET','POST'])
+@user_bp.route('/getopenid',methods=['GET'])
 def getOpenId():
-    if request.method =='POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
-        repassword = request.form.get('repassword')
-        phone = request.form.get('phone')
-        if password == repassword:
-            user=Users()
-            user.username=username
-            user.password=hashlib.sha256(password.encode('utf-8')).hexdigest()
-            user.phone=phone
-            # 添加并提交
-            db.session.add(user)
-            db.session.commit()
-            return redirect(url_for('user.user_center'))
-    return "ssssss"
+    code2session_url = "https://api.weixin.qq.com/sns/jscode2session"
+    data = {
+        "appid" : settings.wxappConfig.appid,
+        "secret" : settings.wxappConfig.appsecret,
+        "js_code":"013ceh200JTJuN1iYz1009eU0V3ceh2w",
+        "grant_type":"authorization_code"
+    }
+    # parameters
+    r = requests.get(code2session_url,params=data)
+        
+    return r

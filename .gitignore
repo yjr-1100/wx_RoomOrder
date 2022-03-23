@@ -2,3 +2,4 @@ __pycache__/
 testdata.txt
 roomphoto/
 migrations/
+RoomOrderbackend/wxappsetting.json
