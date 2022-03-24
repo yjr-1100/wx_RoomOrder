@@ -10,12 +10,9 @@
   </swiper>
 </view>
 
-<view id="title">
-  教室风采
-</view>
+<view id="title">  教室风采 </view>
 
 <view class="classwaper" hover-class="none" hover-stop-propagation="false">
-  
   <view wx:for="{{classroomlist}}" wx:for-index="index" wx:for-item="item" wx:key="name" class="classroom" bindtap = "gotoroomorder" data-index="{{index}}">
     <image class="classimage" src="{{item.imageurl}}" mode="scaleToFill" lazy-load="false" binderror="" bindload=""></image>
     <view class="classinfo" hover-class="none" hover-stop-propagation="false">
@@ -29,5 +26,4 @@
       {{item.describe}}
     </view>
   </view>
-
 </view>
