@@ -1,26 +1,33 @@
-<!--index.wxml-->
-<view class="container">
-  <button bindtap="getUserProfile">sfsdf</button>
-  <view class="userinfo">
-    <block wx:if="{{canIUseOpenData}}">
-      <view class="userinfo-avatar" bindtap="bindViewTap">
-        <open-data type="userAvatarUrl"></open-data>
-      </view>
-      <open-data type="userNickName"></open-data>
-    </block>
+<view class="swiperview" hover-class="none" hover-stop-propagation="false">
+  <swiper indicator-dots="true" indicator-color="rgba(220, 206, 198,0.9)"
+      indicator-active-color="rgba(245, 71, 100,0.9)" 	autoplay="true"
+      interval="5000" duration="1000" 	circular="true" easing-function="easeInOutCubic"
+      next-margin = "60rpx" previous-margin="60rpx">
+    <swiper-item wx:for="{{swiperimage}}" wx:for-index="index" wx:key="a" wx:for-item="item">
+      <image class="swiperimage" src="{{item}}" mode="scaleToFill">
+      </image>
+    </swiper-item>
+  </swiper>
+</view>
 
-    <block wx:elif="{{!hasUserInfo}}">
-      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
-    </block>
+<view id="title">
+  教室风采
+</view>
 
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<view class="classwaper" hover-class="none" hover-stop-propagation="false">
+  
+  <view wx:for="{{classroomlist}}" wx:for-index="index" wx:for-item="item" wx:key="name" class="classroom" bindtap = "gotoroomorder" data-index="{{index}}">
+    <image class="classimage" src="{{item.imageurl}}" mode="scaleToFill" lazy-load="false" binderror="" bindload=""></image>
+    <view class="classinfo" hover-class="none" hover-stop-propagation="false">
+      <view class="classname" hover-class="none" hover-stop-propagation="false">
+      <text class="iconfont icon-jiaoshi "> </text>{{item.name}}</view>
+      <view class="classadress" hover-class="none" hover-stop-propagation="false">
+      <text class="iconfont icon-weizhi "> </text>{{item.adress}} </view>
+    </view>
+    <view class="classdescribe" hover-class="none" hover-stop-propagation="false">
+      <text class="iconfont icon-miaoshucopy "> </text>
+      {{item.describe}}
+    </view>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+
 </view>

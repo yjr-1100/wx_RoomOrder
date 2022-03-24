@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-03-21 22:06:52
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-03-23 21:13:20
+ * @LastEditTime: 2022-03-24 16:29:05
  * @FilePath: \wx_RoomOrder\wxRoomOrderfont\app.js
  * @Description: 
  * @
@@ -38,6 +38,7 @@ App({
     // })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    rulereadtime:3
   }
 })

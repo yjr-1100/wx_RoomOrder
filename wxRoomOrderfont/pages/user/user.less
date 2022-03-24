@@ -165,6 +165,7 @@
         box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);  
         padding-top: 1rpx;
         margin: 5vw 0;
+        position: relative;
         view{
             display: flex;
             align-items: center;
@@ -173,6 +174,7 @@
             padding-left: 5vw;
             font-size: 4.2vw;
             border-bottom: rgb(214, 214, 214) 2rpx solid;
+            
             text{
                 margin-right: 3vw;
                 font-weight: 600;
@@ -194,6 +196,29 @@
             #iconweirenzheng{
                 color:rgb(187, 25, 3);
             }
+            #kefuButton{
+                position: absolute;
+                left: 0;
+                height: 15vw;
+                width: 100%;
+                background-color: transparent;
+                border-radius: 0 0 5vw 5vw;
+            }
+        }
+        :last-child{
+            border-bottom: 0;
+            border-radius: 0 0 5vw 5vw;
+        }
+        view:active{
+            background-color: rgb(248, 248, 248);
+        }
+        .button-hover{
+            border-radius: 0 0 5vw 5vw;
+            background-color: rgb(248, 248, 248);
+
+        }
+        :first-child:active{
+            border-radius: 5vw 5vw 0 0;
         }
     }
 }

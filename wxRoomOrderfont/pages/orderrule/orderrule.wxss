@@ -1,0 +1,72 @@
+.rulecontent {
+  height: 75vh;
+  width: auto;
+  margin: 3vw 8vw 5vw 8vw;
+  background-color: #fff;
+  border-radius: 5vw;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  padding: 0 5vw;
+  font-size: 5vw;
+  font-weight: 300;
+  color: #0c0c0c;
+  font-family: 'Courier New', Courier, monospace;
+}
+.rulecontent .title {
+  text-align: center;
+  color: #472634;
+  padding: 2.5vw 0;
+  font-size: 6vw;
+  font-weight: 600;
+}
+.rulecontent .title2 {
+  color: #472634;
+  font-weight: 400;
+  padding: 1vw 0;
+  font-size: 5.5vw;
+}
+.rulecontent .content view {
+  padding: 0 0 1vw 0;
+  text-indent: 1rem;
+}
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.checkview {
+  margin: 0 8vw 2vw 8vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4vw;
+  color: #472634;
+}
+.checkview #chbox {
+  -webkit-transform: scale(0.7, 0.7);
+}
+.checkview #chbox .wx-checkbox-input.wx-checkbox-input-checked {
+  background: #3b9c0e;
+  color: #fff;
+}
+.readbtn {
+  background-color: #f54764;
+  color: #fff;
+  border-radius: 4vw;
+}
+#rbtn {
+  margin: 4vw 10vw 0 10vw;
+  height: 10vw;
+  width: auto ;
+  font-size: 4.7vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btndisactive {
+  background-color: #f8cfd6;
+  border: #f54764 1rpx solid;
+}
+.buton-hover {
+  background-color: #f8cfd6;
+}

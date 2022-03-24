@@ -156,6 +156,7 @@
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
   padding-top: 1rpx;
   margin: 5vw 0;
+  position: relative;
 }
 .userhome #useroption view {
   display: flex;
@@ -185,4 +186,26 @@
 }
 .userhome #useroption view #iconweirenzheng {
   color: #bb1903;
+}
+.userhome #useroption view #kefuButton {
+  position: absolute;
+  left: 0;
+  height: 15vw;
+  width: 100%;
+  background-color: transparent;
+  border-radius: 0 0 5vw 5vw;
+}
+.userhome #useroption :last-child {
+  border-bottom: 0;
+  border-radius: 0 0 5vw 5vw;
+}
+.userhome #useroption view:active {
+  background-color: #f8f8f8;
+}
+.userhome #useroption .button-hover {
+  border-radius: 0 0 5vw 5vw;
+  background-color: #f8f8f8;
+}
+.userhome #useroption :first-child:active {
+  border-radius: 5vw 5vw 0 0;
 }

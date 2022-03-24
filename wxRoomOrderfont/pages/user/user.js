@@ -4,7 +4,7 @@
  * @Author: YJR-1100
  * @Date: 2022-03-21 23:17:31
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-03-23 20:57:35
+ * @LastEditTime: 2022-03-24 15:26:29
  * @FilePath: \wx_RoomOrder\wxRoomOrderfont\pages\user\user.js
  * @Description: 
  * @
@@ -12,6 +12,7 @@
  */
 
 // pages/user/user.js
+const app = getApp()
 Page({
 
   /**
@@ -43,6 +44,24 @@ Page({
           userInfo: res.userInfo,
           hasUserInfo: true
         })
+      }
+    })
+  },
+  showorderrules(){
+    wx.navigateTo({
+      url: '../orderrule/orderrule?id=1',
+      events: {
+        // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
+        acceptDataFromOpenedPage: function(data) {
+          console.log(data)
+        },
+        someEvent: function(data) {
+          console.log(data)
+        }
+      },
+      success: function(res) {
+        // 通过eventChannel向被打开页面传送数据
+        res.eventChannel.emit('acceptDataFromOpenerPage', { data: 'user发过去的' })
       }
     })
   },

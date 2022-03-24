@@ -1,0 +1,99 @@
+.swiperview{
+    margin-top: 2vw;
+    swiper{
+        height: 48vw;
+
+        swiper-item{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 48vw!important;
+            
+            .swiperimage{
+                border-radius: 5vw;
+                width: 80vw;
+                height: 40vw;
+                box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);  
+    
+            }
+        }
+    }
+}
+
+.wx-swiper-dots{
+    position:relative;
+    bottom: 0.5vw!important;
+}
+
+
+#title{
+    margin: 5vw 8vw 0 8vw;
+    color: rgb(71, 38, 52);
+    font-weight: 600;
+    font-size: 5vw;
+}
+.classwaper{
+    margin: 3vw 8vw 5vw 8vw;
+    width:auto;
+    :first-child{
+        margin-top: 0 !important;
+    }
+    .classroom{
+        border-radius: 5vw;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);  
+        margin-top: 5vw;
+        padding: 4vw 0 3rpx 0;
+        .classimage{
+            border-radius: 5vw;
+            width: 76vw;
+            height: 40vw;
+            margin: 0 4vw 0 4vw;
+        }
+        .classinfo{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            .classname{
+                margin: 1vw 5vw 0 5vw;
+                font-size: 4vw;
+                display: flex;
+                align-items: center;
+                color: rgb(71, 38, 52);
+                text{
+                    font-size: 5vw;
+                    margin-right: 2vw;
+                    color: rgb(252, 174, 30);
+                }
+            }
+            .classadress{
+                margin: 2vw 5vw 2vw 5vw;
+                font-size: 4vw;
+                display: flex;
+                align-items: center;
+                color: rgb(102, 102, 102);
+    
+                text{
+                    font-size: 5vw;
+
+                    margin-right: 2vw;
+                    color: rgb(245, 71, 100);
+                }
+            }
+        }
+        .classdescribe{
+            margin: 1vw 5vw 2vw 5vw;
+            font-size: 4vw;
+            overflow: hidden;
+            white-space:nowrap;
+            text-overflow:ellipsis;
+            text{
+                font-size: 4vw;
+                margin-right: 2vw;
+                margin-left: 1rpx;
+                color: rgb(112, 94, 230);
+            }
+        }
+        
+    }
+    
+}

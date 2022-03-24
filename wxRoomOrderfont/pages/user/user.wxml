@@ -34,43 +34,39 @@
                     <text wx:else id="weirenzheng" class="iconfont icon-weirenzheng1"></text>
                     别人走心我走神
                 </view>
-                
             </view>
             </view>
         <view id="useroption" hover-class="none" hover-stop-propagation="false">
-            <view class="myorder">
+            <view class="myorder" bindtap = "myorders">
                 <text class="iconfont icon-yuyue"></text>
                 我的预约
                 <text class="jiantou iconfont icon-jiantouyou"></text>
             </view>
-            <view >
+            <view bindtap = "editmyinfo">
                 <text id="iconger" class="iconfont icon-gerenxinxi-"></text>
                 个人信息
                 <text class="jiantou iconfont icon-jiantouyou"></text>
 
             </view>
-            <view class="">
+            <view bindtap = "showorderrules">
                 <text id="yuyueguize"class="iconfont icon-bianmaguize"></text>
                 预约须知
                 <text class="jiantou iconfont icon-jiantouyou"></text>
 
             </view>
-            <view class="verifyincome">
+            <view bindtap="identityverify" class="verifyincome" >
                 <!-- <view ><text class="iconfont icon-weirenzheng1"></text></view> -->
                 <text wx:if="" id="iconrenzhen"class="iconfont icon-xinxirenzheng"></text>
                 <text wx:else id="iconweirenzheng" class="iconfont icon-weirenzheng1"></text>
-                
                 身份认证
                 <text class="jiantou iconfont icon-jiantouyou"></text>
-
             </view>
-            <view class="">
+            <view id="kefuwive">
                 <text id=""class="iconfont icon-kefu"></text>
                 联系客服
                 <text class="jiantou iconfont icon-jiantouyou"></text>
-
+                <button open-type="contact" id='kefuButton'></button>
             </view>
-
         </view>
     </view>
 </view>

@@ -1,7 +1,9 @@
 {
   "pages": [
     "pages/user/user",
-    "pages/index/index"
+    "pages/index/index",
+    "pages/orderrule/orderrule",
+    "pages/roomdetail/roomdetail" 
   ],
   "window": {
     "backgroundTextStyle": "dark",
