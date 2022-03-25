@@ -15,7 +15,7 @@
         <view id="usernickname" hover-class="none" hover-stop-propagation="false">
             <open-data type="userNickName"></open-data>
         </view>
-        <button bindtap="getUserProfile">使用微信快速登录</button>
+        <button bindtap="getUserProfile" disabled="{{canloginbtnuse}}">使用微信快速登录</button>
     </view>
 </view>
 <view wx:else>

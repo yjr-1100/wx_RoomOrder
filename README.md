@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-03-21 20:06:11
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-03-25 19:33:20
+ * @LastEditTime: 2022-03-25 23:59:26
  * @FilePath: \wx_RoomOrder\README.md
  * @Description: 
  * 
@@ -14,6 +14,21 @@
 ## 后端设计
 
 由于微信审核过程较慢，所以将一些可能经常更改的资源文件放在服务器上，通过请求来获取
+1. :heavy_check_mark: 返回openid的接口
+
+2. :heavy_check_mark: 创建用户的接口
+
+3. :clock10: 更新用户信息的接口
+
+4. :clock10: 创建教室的接口
+
+5. :clock10: 更新教室的接口
+
+6. :clock10: 预约记录查询接口
+
+7. :clock10: 预约审核接口
+
+加油 :poultry_leg:
 
 ## 小程序设计
 

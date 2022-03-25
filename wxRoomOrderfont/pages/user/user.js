@@ -4,7 +4,7 @@
  * @Author: YJR-1100
  * @Date: 2022-03-21 23:17:31
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-03-24 15:26:29
+ * @LastEditTime: 2022-03-25 23:04:26
  * @FilePath: \wx_RoomOrder\wxRoomOrderfont\pages\user\user.js
  * @Description: 
  * @
@@ -13,12 +13,14 @@
 
 // pages/user/user.js
 const app = getApp()
+import {request} from "../../request/index.js"  
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    canloginbtnuse:false,
     userInfo: {},
     hasUserInfo: false,
     canIUseGetUserProfile: false,
@@ -28,24 +30,46 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (wx.getUserProfile) {
-      this.setData({
-        canIUseGetUserProfile: true
-      })
-    }
+    console.log("111")
   },
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
     // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-    wx.getUserProfile({
-      desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-      success: (res) => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    })
+    if(app.globalData.canIlogin==0){
+      this.setData({
+        canloginbtnuse:true
+      })
+      wx.showModal({
+        title: '提示',
+        content: '网络错误请清理后台后重试',
+        success (res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })
+    }else{
+      wx.getUserProfile({
+        desc: '用于完善用户资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+        success: (res) => {
+          this.setData({
+            userInfo: res.userInfo,
+            hasUserInfo: true
+          })
+          var data={
+            openid:wx.getStorageSync('openid'),
+            ...res.userInfo
+          }
+          request({url:"/updateuser",method: "post",data:data})
+          .then(result=>{
+            console.log(result)
+          })
+        }
+      })
+    }
+    
   },
   showorderrules(){
     wx.navigateTo({
@@ -69,28 +93,30 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    console.log("111")
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // 页面切换 之间切换会输出
+    console.log("222")
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    // tablebaar 之间切换会输出
+    console.log("333")
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    console.log("444")
   },
 
   /**
@@ -111,6 +137,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    
   }
 })

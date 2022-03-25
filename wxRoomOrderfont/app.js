@@ -2,14 +2,16 @@
  * @Author: YJR-1100
  * @Date: 2022-03-21 22:06:52
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-03-25 20:36:35
+ * @LastEditTime: 2022-03-25 22:41:37
  * @FilePath: \wx_RoomOrder\wxRoomOrderfont\app.js
  * @Description: 
  * @
  * @Copyright (c) 2022 by yjr-1100/CSU, All Rights Reserved. 
  */
+import {request} from "./request/index.js"
 App({
   onLaunch() {
+    var that = this
     // 展示本地存储能力
     const logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -20,26 +22,28 @@ App({
         if (res.code) {
           //发起网络请求
           console.log(res.code);
-          wx.request({
-            url: 'http://127.0.0.1:5000/api/v1/getopenid',
-            data: {
-              code: res.code
-            },
-            method:"GET",
-            dataType:"json",
-            success(res){
-              var openid = res.data.openid
-              wx.setStorageSync('openid',openid)
-            },
-            fail(e){
-              console.log(e)
-            }
+          var data={ code: res.code  }
+          var myheader={  'content-type': 'application/json'}
+          request({url:"/getopenid",data:data,method:"GET",header:myheader})
+          .then(result=>{
+            console.log(result)
+            var openid = result.data.openid
+            wx.setStorageSync('openid',openid)
+            that.globalData.canIlogin=1;
+          },err=>{
+            wx.showToast({
+              title: '网络错误',
+              icon: 'error',//
+              mask:true,
+              duration: 1500
+            })
           })
         } else {
           wx.showToast({
             title: '数据错误请重开',
             icon: 'error',//
-            duration: 1000
+            mask:true,
+            duration: 1500
           })
         }
       }
@@ -47,6 +51,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    rulereadtime:3
+    rulereadtime:3,
+    canIlogin:0
   }
 })
