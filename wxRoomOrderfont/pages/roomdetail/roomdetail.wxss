@@ -1,1 +1,142 @@
-/* pages/roomdetail/roomdetail.wxss */
+.swiperview swiper {
+  height: 65vw;
+}
+.swiperview swiper swiper-item {
+  display: flex;
+  justify-content: center;
+  height: 65vw!important;
+}
+.swiperview swiper swiper-item .swiperimage {
+  border-radius: 0 0 5vw 5vw;
+  height: 60vw;
+  width: 100vw;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}
+.wx-swiper-dots {
+  position: relative;
+  bottom: 23vw!important;
+}
+.body {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: auto;
+  align-self: baseline;
+  position: relative;
+}
+.body .classinfo {
+  width: 90vw;
+  background-color: #fff;
+  position: absolute;
+  top: -20vw;
+  border-radius: 5vw;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  padding: 4vw 5vw 4vw 5vw;
+}
+.body .classinfo :last-child {
+  border: 0;
+  height: auto;
+  line-height: 8vw;
+  padding-top: 1vw;
+}
+.body .classinfo view {
+  color: #472634;
+  font-size: 5.3vw;
+  font-weight: 500;
+  width: auto;
+  line-height: 12vw;
+  height: 12vw;
+  border-bottom: #f5f5f5 1rpx solid;
+}
+.body .classinfo view .icon-jiaoshi {
+  color: #fcae1e;
+  margin-right: 2vw;
+  font-size: 5vw;
+}
+.body .classinfo view .icon-weizhi {
+  color: #f54764;
+  margin-right: 2vw;
+  font-size: 5vw;
+}
+.body .classinfo view .icon-miaoshucopy {
+  margin-right: 1vw;
+  font-size: 5vw;
+  color: #705ee6;
+}
+.timechose {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 5vw;
+  margin: 5vw 5vw;
+}
+.timechose .timechoseitem {
+  color: #666666;
+  background-color: #e6e6e6;
+  border-radius: 3vw;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+  margin: 1vw 0.5vw;
+  width: 29vw;
+  height: 30vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.timechose .timechoseitem .time {
+  font-size: 4.5vw;
+}
+.timechose .timechoseitem .status {
+  margin-top: 1.5vw;
+}
+.timechose .actived {
+  color: #f54764;
+  background-color: #fff;
+}
+.timechose .userchosed {
+  color: #f54764;
+  background: #f8cfd6;
+  border: #f54764 1rpx dashed;
+}
+.title {
+  color: #472634;
+  font-size: 5.3vw;
+  font-weight: 600;
+  margin: 2vw 5vw;
+}
+.roomuserdfor {
+  margin: 2vw 5vw 5vw 5vw;
+  border-radius: 5vw;
+  background-color: #fff;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+  border: #f5f5f5 2rpx solid;
+}
+.roomuserdfor textarea {
+  height: 52vw;
+  padding: 5vw;
+  width: auto;
+  border-radius: 5vw;
+  background-color: #ffffff;
+  position: relative;
+  border: #fff 1rpx solid;
+}
+.roomuserdfor textarea text {
+  position: absolute;
+  bottom: 1vw;
+  right: 3vw;
+  color: #c5c5c5;
+}
+.orderbtn {
+  color: #fff;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 12vw;
+  font-size: 5vw;
+  font-weight: 400;
+  background-color: #f54764;
+  margin: 10vw 5vw;
+  border-radius: 5vw;
+}

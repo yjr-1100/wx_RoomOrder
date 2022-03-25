@@ -3,7 +3,8 @@
     "pages/user/user",
     "pages/index/index",
     "pages/orderrule/orderrule",
-    "pages/roomdetail/roomdetail" 
+    "pages/roomdetail/roomdetail",
+    "pages/myorders/myorders"
   ],
   "window": {
     "backgroundTextStyle": "dark",

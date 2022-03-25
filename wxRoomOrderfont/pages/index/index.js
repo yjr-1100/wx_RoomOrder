@@ -4,7 +4,7 @@
  * @Author: YJR-1100
  * @Date: 2022-03-21 22:06:52
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-03-24 23:59:13
+ * @LastEditTime: 2022-03-25 11:01:08
  * @FilePath: \wx_RoomOrder\wxRoomOrderfont\pages\index\index.js
  * @Description: 
  * @
@@ -71,12 +71,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    console.log(options)
   },
   gotoroomorder:function(e){
     //当前点击的索引
     var index = e.currentTarget.dataset.index;
     console.log(index)
+    wx.navigateTo({
+      url: `../roomdetail/roomdetail?id=${index}`,
+      success: function(res) {
+        // 通过eventChannel向被打开页面传送数据
+        res.eventChannel.emit('classdata', { data: 'user发过去的' })
+      }
+    })
   },
 
   /**

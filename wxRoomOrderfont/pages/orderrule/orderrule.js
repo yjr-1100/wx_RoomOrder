@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-03-24 13:39:31
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-03-24 16:29:54
+ * @LastEditTime: 2022-03-25 11:02:38
  * @FilePath: \wx_RoomOrder\wxRoomOrderfont\pages\orderrule\orderrule.js
  * @Description: 
  * @
@@ -30,7 +30,7 @@ Page({
     this.setData({
       "counttime":app.globalData.rulereadtime
     })
-    console.log(option.query)
+    console.log(option)
     const eventChannel = this.getOpenerEventChannel()
     // 发回去
     eventChannel.emit('acceptDataFromOpenedPage', {data: 'test1'});

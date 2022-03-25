@@ -1,0 +1,163 @@
+.swiperview{
+    swiper{
+        height: 65vw;
+        swiper-item{
+            display: flex;
+            justify-content: center;
+            // align-items: center;
+            height: 65vw!important;
+            
+            .swiperimage{
+                border-radius: 0 0 5vw 5vw;
+                height: 60vw;
+                width: 100vw;
+                box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);  
+            }
+        }
+    }
+}
+
+.wx-swiper-dots{
+    position:relative;
+    bottom: 23vw!important;
+}
+.body{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: auto;
+    align-self: baseline;
+    position: relative;
+    .classinfo{
+        width: 90vw;
+        // height: 50vw;
+        background-color: #fff;
+        position:absolute;
+        top:-20vw;
+        border-radius: 5vw;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);  
+        padding: 4vw 5vw 4vw 5vw;
+        :last-child{
+            border: 0;
+            height: auto;
+            line-height: 8vw;
+            padding-top: 1vw;
+        }
+        view{
+            color:rgb(71, 38, 52);
+            font-size: 5.3vw;
+            font-weight: 500;
+            width: auto;
+            line-height: 12vw;
+            height: 12vw;
+            border-bottom: rgb(245, 245, 245) 1rpx solid;
+            .icon-jiaoshi{
+                color: rgb(252, 174, 30);
+                margin-right: 2vw;
+                font-size: 5vw;
+            }
+            .icon-weizhi{
+                color: rgb(245, 71, 100);
+                margin-right: 2vw;
+                font-size: 5vw;
+
+            }
+            .icon-miaoshucopy{
+                margin-right: 1vw;
+                font-size: 5vw;
+                color: rgb(112, 94, 230);
+            }
+        }
+        
+
+    }
+}
+
+.timechose{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content:space-between;
+    border-radius: 5vw;
+    // background-color: #fff;
+    margin: 5vw 5vw;
+    .timechoseitem{
+        color: rgb(102, 102, 102);
+        background-color: rgb(230, 230, 230);
+        // background-color: #fff;
+        border-radius: 3vw;
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);  
+
+        margin: 1vw 0.5vw;
+        width: 29vw;
+        height: 30vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        // border:rgb(102, 102, 102)  1rpx dashed;
+        .time{
+            font-size: 4.5vw;
+        }
+    .status{
+        margin-top: 1.5vw;
+    }
+    }
+    .actived{
+        color:rgb(245, 71, 100);
+        // background: rgb(248, 207, 214);
+        background-color: #fff;
+        // border:rgb(245, 71, 100)  1rpx dashed;
+    }
+    .userchosed{
+        // border:rgb(245, 62, 92)  1rpx solid;
+        color:rgb(245, 71, 100);
+        background: rgb(248, 207, 214);
+        border:rgb(245, 71, 100)  1rpx dashed;
+    }
+}
+
+.title{
+    color:rgb(71, 38, 52);
+    font-size: 5.3vw;
+    font-weight: 600;
+    margin: 2vw 5vw;
+}
+
+.roomuserdfor{
+    margin: 2vw 5vw 5vw 5vw;
+    border-radius: 5vw;
+    background-color: #fff;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);  
+    border: rgb(245, 245, 245) 2rpx solid;
+    textarea{
+        height: 52vw;
+        padding: 5vw;
+        width: auto;
+        border-radius: 5vw;
+        background-color:rgb(255, 255, 255) ;
+        position: relative;
+        border: #fff 1rpx solid;
+        text{
+            position: absolute;
+            bottom: 1vw;
+            right: 3vw;
+            color:rgb(197, 197, 197)
+        }
+    }
+    
+}
+
+.orderbtn{
+    color: #fff;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 12vw;
+    font-size: 5vw;
+    font-weight: 400;
+    background-color: rgb(245, 71, 100);
+    margin: 10vw 5vw;
+    border-radius: 5vw;
+}

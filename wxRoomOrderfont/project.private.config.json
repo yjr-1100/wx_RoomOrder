@@ -23,6 +23,18 @@
           "pathName": "pages/index/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/roomdetail/roomdetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/myorders/myorders",
+          "query": "",
+          "scene": null
         }
       ]
     }

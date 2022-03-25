@@ -1,2 +1,64 @@
-<!--pages/roomdetail/roomdetail.wxml-->
-<text>pages/roomdetail/roomdetail.wxml</text>
+<view class="swiperview" hover-class="none" hover-stop-propagation="false">
+  <swiper indicator-dots="true" indicator-color="rgba(220, 206, 198,0.9)"
+      indicator-active-color="rgba(245, 71, 100,0.9)" 	autoplay="true"
+      interval="5000" duration="1000" 	circular="true" easing-function="easeInOutCubic"
+      >
+    <swiper-item 
+    wx:for="{{room.detailimage}}" 
+    wx:for-index="index" 
+    wx:key="a" 
+    wx:for-item="item"
+    bindtap = "handlePrevewImage"
+    data-index="{{index}}"
+    >
+      <image class="swiperimage" src="{{item}}" mode="scaleToFill">
+      </image>
+    </swiper-item>
+  </swiper>
+</view>
+
+<view class="body" hover-class="none" hover-stop-propagation="false" style="height:{{bodyheight}}">
+    <view class="classinfo">
+        <view class="classname" hover-class="none" hover-stop-propagation="false">
+        <text class="iconfont icon-jiaoshi "> </text>{{room.name}}</view>
+        <view class="classadress" hover-class="none" hover-stop-propagation="false">
+        <text class="iconfont icon-weizhi "> </text>{{room.adress}} </view>
+        <view class="classdescribe" hover-class="none" hover-stop-propagation="false">
+        <text class="iconfont icon-miaoshucopy "> </text>
+        {{room.describe}}
+    </view>
+    </view>
+</view>
+
+<view class="timechose" hover-class="none" hover-stop-propagation="false">
+    <view class="timechoseitem {{item.status==0?'actived':''}} {{item.status==2?'userchosed':''}}"
+    wx:for="{{canbeuserdtime}}"
+    wx:for-index="index"
+    wx:for-item="item"
+    bindtap = "chosetime"
+    data-index = "{{index}}"
+    >
+        <view class="time" hover-class="none" hover-stop-propagation="false">
+            {{item.usetime}}
+        </view>
+
+        <view wx:if="{{item.status==0}}" class="status" hover-class="none" hover-stop-propagation="false">可选</view>
+        <view wx:elif="{{item.status==1}}" class="status" hover-class="none" hover-stop-propagation="false">已借出</view>
+        <view wx:elif="{{item.status==2}}" class="status" hover-class="none" hover-stop-propagation="false">已选</view>
+    </view>
+</view>
+
+<view class="title" hover-class="none" hover-stop-propagation="false">
+    教室用途
+</view>
+<view class="roomuserdfor" hover-class="none" hover-stop-propagation="false">
+
+    <textarea type="text" placeholder="请认真描述教室用途,否则无法通过审核"
+    maxlength="{{maxlength}}"
+    placeholder-style="color:rgb(197, 197, 197)"
+    bindinput="useredfoinput">
+    <text class="currentWordNumber">{{currentlength|0}}/{{maxlength}}</text>
+    </textarea>
+</view>
+
+<button class="orderbtn" bindtap="clickbtn">立即预约</button>
