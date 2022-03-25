@@ -1,1 +1,56 @@
-/* pages/myorders/myorders.wxss */
+.orderlists {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  padding-top: 4vw;
+}
+.orderlists .orderitem {
+  width: 90vw;
+  height: auto;
+  border-radius: 5vw;
+  background-color: #fff;
+  position: relative;
+  color: #472634;
+  padding: 3vw 3vw;
+  margin-bottom: 5vw;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}
+.orderlists .orderitem .status {
+  position: absolute;
+  top: 1.5vw;
+  right: 5vw;
+  font-size: 18vw;
+}
+.orderlists .orderitem .icon-weitongguo {
+  color: #ff1e44;
+}
+.orderlists .orderitem .icon-yitongguo {
+  color: #39b944;
+}
+.orderlists .orderitem .icon-daishenhe {
+  color: #f5aa47;
+}
+.orderlists .orderitem view {
+  font-size: 4.5vw;
+  height: 7.5vw;
+  display: flex;
+  align-items: center;
+}
+.orderlists .orderitem view text {
+  margin: 0 2vw 0 1vw;
+  font-weight: 500;
+  font-size: 5vw;
+}
+.orderlists .orderitem view .icon-jiaoshi {
+  color: #fcae1e;
+}
+.orderlists .orderitem view .icon-weizhi {
+  color: #f54764;
+}
+.orderlists .orderitem view .icon-shijiantemai {
+  color: #5eb0f3;
+}
+.orderlists .orderitem view .icon-shijian1 {
+  color: #1f527c;
+}

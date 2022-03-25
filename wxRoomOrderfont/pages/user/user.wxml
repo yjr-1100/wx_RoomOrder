@@ -1,4 +1,4 @@
-<view wx:if="{{!true}}" class="" hover-class="none" hover-stop-propagation="false">
+<view wx:if="{{!hasUserInfo}}" class="" hover-class="none" hover-stop-propagation="false">
     <image id="backimage" src="../../Images/loginbackground_classroom.jpg" mode="scaleToFill"/>
     <view id="imagemask" hover-class="none" hover-stop-propagation="false">
         <text id="textlineone" selectable="false" space="false" decode="false">Welcome to</text>

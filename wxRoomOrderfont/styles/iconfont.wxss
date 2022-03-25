@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3272586 */
-  src: url('//at.alicdn.com/t/font_3272586_7cgwkjcf6iy.woff2?t=1648136265607') format('woff2'),
-       url('//at.alicdn.com/t/font_3272586_7cgwkjcf6iy.woff?t=1648136265607') format('woff'),
-       url('//at.alicdn.com/t/font_3272586_7cgwkjcf6iy.ttf?t=1648136265607') format('truetype');
+  src: url('//at.alicdn.com/t/font_3272586_fy9im9kzl6j.woff2?t=1648210161170') format('woff2'),
+       url('//at.alicdn.com/t/font_3272586_fy9im9kzl6j.woff?t=1648210161170') format('woff'),
+       url('//at.alicdn.com/t/font_3272586_fy9im9kzl6j.ttf?t=1648210161170') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,34 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-shijiantemai:before {
+  content: "\e65c";
+}
+
+.icon-shijian1:before {
+  content: "\e6b3";
+}
+
+.icon-daishenhe:before {
+  content: "\e601";
+}
+
+.icon-weitongguo:before {
+  content: "\e602";
+}
+
+.icon-yitongguo:before {
+  content: "\e600";
+}
+
+.icon-butongguo:before {
+  content: "\e6cd";
+}
+
+.icon-daishenhe1:before {
+  content: "\e6d5";
 }
 
 .icon-miaoshucopy:before {
