@@ -4,7 +4,7 @@
 # @Author: YJR-1100
 # @Date: 2022-03-22 14:26:49
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-03-25 20:59:40
+# @LastEditTime: 2022-03-26 16:54:39
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\settings.py
 # @Description: 
 # @
@@ -34,3 +34,6 @@ class wxappConfig(Config):
     appsetting = json.load(open(Config.WXAPPSETTINGPATH))
     appid = appsetting['appid']
     appsecret = appsetting['appsecret']
+
+class defaultimage():
+    swiperdefaultimage="https://cdn.jsdelivr.net/gh/yjr-1100/Photobag/roomorderimage/202203261650698.jpg"

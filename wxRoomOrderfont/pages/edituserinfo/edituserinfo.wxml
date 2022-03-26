@@ -1,0 +1,41 @@
+<view class="body" hover-class="none" hover-stop-propagation="false">
+    <view class="" hover-class="none" hover-stop-propagation="false">
+        <view class="title" hover-class="none" hover-stop-propagation="false">
+            姓名：
+        </view>
+        <view class="inputarea" hover-class="none" hover-stop-propagation="false">
+            <text class="iconfont icon-wodexuanzhong"></text>
+            <input type="text" maxlength="20" disabled="{{editedisabled}}" id="uname" class="{{editedisabled?'disedit':''}}" bindblur="setuserinfo" value="{{userinfo.uname}}"/>
+        </view>
+    </view>
+    <view class="" hover-class="none" hover-stop-propagation="false">
+        <view class="title" hover-class="none" hover-stop-propagation="false">
+            学号：
+        </view>
+        <view class="inputarea" hover-class="none" hover-stop-propagation="false">
+            <text class="iconfont icon-huiyuanqia"></text>
+            <input type="text" maxlength="20" disabled="{{editedisabled}}" id="schoolid" class="{{editedisabled?'disedit':''}}" bindblur="setuserinfo"  value="{{userinfo.schoolid}}"/>
+        </view>
+    </view>
+    <view class="" hover-class="none" hover-stop-propagation="false">
+        <view class="title" hover-class="none" hover-stop-propagation="false">
+            专业班级：
+        </view>
+        <view class="inputarea" hover-class="none" hover-stop-propagation="false">
+            <text class="iconfont icon-banji1"></text>
+            <input type="text" maxlength="50" disabled="{{editedisabled}}" id="profassionclass" class="{{editedisabled?'disedit':''}}" bindblur="setuserinfo" value="{{userinfo.profassionclass}}"/>
+        </view>
+    </view>
+    <view class="" hover-class="none" hover-stop-propagation="false">
+        <view class="title" hover-class="none" hover-stop-propagation="false">
+            联系电话：
+        </view>
+        <view class="inputarea" hover-class="none" hover-stop-propagation="false">
+            <text class="iconfont icon-shouji"></text>
+            <input type="number" maxlength="11" disabled="{{editedisabled}}" id="uphonenum" class="{{editedisabled?'disedit':''}}" bindblur="checkphone" value="{{userinfo.uphonenum}}"/>
+        </view>
+    </view>
+</view>
+
+<button bindtap="commitinfo" disabled="{{editedisabled}}">确认提交</button>
+<view id="imagemask" hover-class="none" hover-stop-propagation="false"></view>

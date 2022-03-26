@@ -35,6 +35,12 @@
           "pathName": "pages/myorders/myorders",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/edituserinfo/edituserinfo",
+          "query": "",
+          "scene": null
         }
       ]
     }

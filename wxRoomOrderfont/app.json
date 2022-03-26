@@ -4,7 +4,8 @@
     "pages/index/index",
     "pages/orderrule/orderrule",
     "pages/roomdetail/roomdetail",
-    "pages/myorders/myorders"
+    "pages/myorders/myorders",
+    "pages/edituserinfo/edituserinfo"
   ],
   "window": {
     "backgroundTextStyle": "dark",

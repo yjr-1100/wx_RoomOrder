@@ -4,7 +4,7 @@
  * @Author: YJR-1100
  * @Date: 2022-03-21 22:06:52
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-03-25 11:01:08
+ * @LastEditTime: 2022-03-26 17:47:29
  * @FilePath: \wx_RoomOrder\wxRoomOrderfont\pages\index\index.js
  * @Description: 
  * @
@@ -14,19 +14,14 @@
 
 // 获取应用实例
 const app = getApp()
-
+import {request} from "../../request/index.js"  
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    swiperimage:[
-      "../../Images/swiper_p1.jpeg",
-      "../../Images/swiper_p2.jpeg",
-      "../../Images/swiper_p3.jpeg",
-      "../../Images/swiper_p4.jpeg"
-    ],
+    swiperimage:[],
     classroomlist:[
       {
         "name":"咨询室",
@@ -72,6 +67,12 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    request({url:"/swiper/getswiperimage",method: "get"})
+    .then(result=>{
+      this.setData({
+        swiperimage:result.data.responsedata
+      })
+    })
   },
   gotoroomorder:function(e){
     //当前点击的索引
@@ -90,13 +91,14 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+    console.log("index1")
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    console.log("index2")
     
   },
 
@@ -104,6 +106,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
+    console.log("index3")
     
   },
 
@@ -111,6 +114,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
+    console.log("index4")
     
   },
 

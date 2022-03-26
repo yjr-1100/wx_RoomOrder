@@ -1,9 +1,20 @@
+/*
+ * @Author: YJR-1100
+ * @Date: 2022-03-21 22:06:52
+ * @LastEditors: YJR-1100
+ * @LastEditTime: 2022-03-26 20:28:32
+ * @FilePath: \wx_RoomOrder\wxRoomOrderfont\app.wxss
+ * @Description: 
+ * @
+ * @Copyright (c) 2022 by yjr-1100/CSU, All Rights Reserved. 
+*/
 /**app.wxss**/
 @import "./styles/iconfont.wxss";
 page,view,text,swiper,weip-item,image,navigator{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 page{

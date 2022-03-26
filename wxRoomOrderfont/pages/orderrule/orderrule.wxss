@@ -41,6 +41,7 @@
   justify-content: center;
   font-size: 4vw;
   color: #472634;
+  font-family: "";
 }
 .checkview #chbox {
   -webkit-transform: scale(0.7, 0.7);
@@ -53,6 +54,7 @@
   background-color: #f54764;
   color: #fff;
   border-radius: 4vw;
+  border: #f54764 1rpx solid;
 }
 #rbtn {
   margin: 4vw 10vw 0 10vw;
@@ -64,9 +66,17 @@
   justify-content: center;
 }
 .btndisactive {
+  font-family: "";
   background-color: #f8cfd6;
-  border: #f54764 1rpx solid;
+  border: #e6e6e6 1rpx solid;
+  color: #686868 !important;
 }
 .buton-hover {
   background-color: #f8cfd6;
+}
+radio .wx-radio-input.wx-radio-input-disabled {
+  border: 2rpx solid #999999;
+  color: #fff;
+  border-radius: 100%;
+  background: #3b9c0e;
 }

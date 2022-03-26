@@ -1,5 +1,5 @@
 <view wx:if="{{!hasUserInfo}}" class="" hover-class="none" hover-stop-propagation="false">
-    <image id="backimage" src="../../Images/loginbackground_classroom.jpg" mode="scaleToFill"/>
+    <image id="backimage" src="https://cdn.jsdelivr.net/gh/yjr-1100/Photobag/roomorderimage/loginbackground_classroom.jpg" mode="scaleToFill"/>
     <view id="imagemask" hover-class="none" hover-stop-propagation="false">
         <text id="textlineone" selectable="false" space="false" decode="false">Welcome to</text>
 
@@ -21,11 +21,11 @@
 <view wx:else>
     <view class="userhome" hover-class="none" hover-stop-propagation="false">
         <view class="userhead" hover-class="none" hover-stop-propagation="false">
-            <image id="userbackimage" src="../../Images/userbackground_classroom_1.jpg" mode="scaleToFill"/>
+            <image id="userbackimage" src="https://cdn.jsdelivr.net/gh/yjr-1100/Photobag/roomorderimage/userbackground_classroom_1.jpg" mode="scaleToFill"/>
             <view id="userimagemask" hover-class="none" hover-stop-propagation="false"></view>
             <view class="" hover-class="none" hover-stop-propagation="false">
                 <view id="userinfoicon" hover-class="none" hover-stop-propagation="false">
-                    <image class="" src="../../Images/userbackground_classroom_1.jpg" mode="scaleToFill" lazy-load="false" binderror="" bindload="">
+                    <image class="" src="{{userInfo.avatarUrl}}" mode="scaleToFill" lazy-load="false" binderror="" bindload="">
                     </image>
                 </view>
                 <view class="userinfoname" hover-class="none" hover-stop-propagation="false">

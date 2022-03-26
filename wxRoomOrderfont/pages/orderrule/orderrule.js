@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-03-24 13:39:31
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-03-25 11:02:38
+ * @LastEditTime: 2022-03-26 19:49:47
  * @FilePath: \wx_RoomOrder\wxRoomOrderfont\pages\orderrule\orderrule.js
  * @Description: 
  * @
@@ -31,14 +31,22 @@ Page({
       "counttime":app.globalData.rulereadtime
     })
     console.log(option)
-    const eventChannel = this.getOpenerEventChannel()
-    // 发回去
-    eventChannel.emit('acceptDataFromOpenedPage', {data: 'test1'});
-    eventChannel.emit('someEvent', {data: 'test2'});
-    // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
-    eventChannel.on('acceptDataFromOpenerPage', function(data) {
-      console.log(data)
-    })
+    if(option.isreadedrules == 1){
+      this.setData({
+        isreaded:true,
+        chboxchecked:true,
+        rediodisabled:true,
+        counttime:""
+      })
+    }
+    else{
+      countDown(this,this.data.counttime)
+    }
+    
+    // // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
+    // eventChannel.on('acceptDataFromOpenerPage', function(data) {
+    //   console.log(data)
+    // })
   },
   radioChange:function(e){
     // console.log(e)
@@ -54,12 +62,16 @@ Page({
   },
   btnverify:function(e){
     if(this.data.isreaded&&this.data.chboxchecked){
+      const eventChannel = this.getOpenerEventChannel()
+      
       this.setData({
         rediodisabled:true
       })
       wx.navigateBack({
         delta: 1
       })
+      // 发回去
+      eventChannel.emit('acceptDataFromOpenedPage', {isreadedrules: '1'});
     }
     else if(!this.data.isreaded){
       // 提示需要把须知滑动到最底下
@@ -82,7 +94,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    countDown(this,this.data.counttime)
+    // countDown(this,this.data.counttime)
   },
 
   /**

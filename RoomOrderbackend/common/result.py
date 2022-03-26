@@ -4,8 +4,8 @@
 # @Author: YJR-1100
 # @Date: 2022-03-25 23:24:58
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-03-25 23:24:58
-# @FilePath: \wx_RoomOrder\RoomOrderbackend\apps\common\result.py
+# @LastEditTime: 2022-03-26 22:51:59
+# @FilePath: \wx_RoomOrder\RoomOrderbackend\common\result.py
 # @Description: 
 # @
 # @Copyright (c) 2022 by yjr-1100/CSU, All Rights Reserved. 
@@ -13,16 +13,18 @@
 from flask import request,Response
 import json
 import os
-def trueReturn(data=None, msg="", st="True"):
+def trueReturn(data=None,code=1, msg="", st=True):
     return json.dumps({
-        'data': data,
+        'responsedata': data,
+        'code':code,
         'msg': msg,
         'status': st
     })
 
-def falseReturn(data=None, msg="", st="False"):
+def falseReturn(data=None,code=0 ,msg="", st=False):
     return json.dumps({
-        'data': data,
+        'responsedata': data,
+        'code':code,
         'msg': msg,
         'status': st
     })

@@ -42,7 +42,7 @@
     "useCompilerPlugins": false
   },
   "compileType": "miniprogram",
-  "libVersion": "2.23.1",
+  "libVersion": "2.23.2",
   "appid": "wx731a6c18b6b4904d",
   "projectname": "RoomOrder",
   "debugOptions": {

@@ -4,7 +4,7 @@
 # @Author: YJR-1100
 # @Date: 2022-03-22 16:15:12
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-03-26 00:00:35
+# @LastEditTime: 2022-03-26 22:54:12
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\apps\users\api.py
 # @Description: 
 # @
@@ -16,10 +16,12 @@ from flask import Blueprint,request,redirect,render_template,url_for
 from pandas import isnull
 from apps.users.models import Users
 import settings 
-import hashlib
+from common.result import trueReturn,falseReturn
+from common.sqlalchemy2json import AlchemyEncoder
 from exts import db
 from sqlalchemy import or_
 import requests
+import json
 user_bp = Blueprint('users',__name__)
 
 # 得到用户的openid
@@ -38,23 +40,72 @@ def getOpenId():
     print(r.json())
     return r.json()
 
-# 更新用户信息
+# 授权后更新用户信息
 @user_bp.route('/updateuser',methods=['POST'])
 def updateuser():
     # application/jso
     data = request.get_json()
-    uid = data['openid']
-    print(uid)
+    try:
+        uopenid = data['openid']
+    except:
+        return falseReturn(msg="no openid")
+    print(uopenid)
     nickname = data['nickName']
     avatarurl = data['avatarUrl']
-    user = Users.query.get(uid)
+    
+    user = Users.query.filter(Users.uopenid==uopenid).first()
     if not user :
-        user = Users(uid=uid,nickname=nickname,avatarUrl=avatarurl)
+        user = Users(uopenid=uopenid,nickname=nickname,avatarUrl=avatarurl)
         db.session.add(user)
         db.session.commit()
+        return trueReturn(data=user.todict())
     else:
-        pass
-        user.schoolid="123"
-        db.session.commit()
+        jsonuser = json.dumps(user,cls=AlchemyEncoder)
+        dictuser = json.loads(jsonuser)
+        return trueReturn(data=dictuser)
 
-    return "12"
+
+# 授权阅读预约规则
+@user_bp.route('/modifyreaded',methods=['POST'])
+def userhaveread():
+    data = request.get_json()
+    try:
+        uopenid = data['openid']
+    except:
+        return falseReturn(msg="no openid")   
+    user = Users.query.filter(Users.uopenid==uopenid).first()
+    try:
+        user.isreadedrules = 1
+        db.session.commit()
+    except:
+        return falseReturn(msg="数据库错误")
+    jsonuser = json.dumps(user,cls=AlchemyEncoder)
+    dictuser = json.loads(jsonuser)
+    return trueReturn(data=dictuser)
+
+# 授权后用户编辑个人信息
+@user_bp.route('/edituserinfo',methods=['POST'])
+def edituserinfo():
+    data = request.get_json()
+    print(data)
+    try:
+        uopenid = data['openid']
+    except:
+        return falseReturn(msg="no openid")   
+    user = Users.query.filter(Users.uopenid==uopenid).first()
+    try:
+        user.isbasaceinfo = 1
+        user.uname = data['uname']
+        user.uphonenum = data['uphonenum']
+        user.schoolid = data['schoolid']
+        user.profassionclass = data['profassionclass']
+        db.session.commit()
+    except Exception as e:
+        print(e)
+        return falseReturn(msg="数据库错误")
+    jsonuser = json.dumps(user,cls=AlchemyEncoder)
+    dictuser = json.loads(jsonuser)
+    return trueReturn(data=dictuser)
+
+# isinsider
+# 内部人员认证

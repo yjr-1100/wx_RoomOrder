@@ -4,7 +4,7 @@
  * @Author: YJR-1100
  * @Date: 2022-03-21 23:17:31
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-03-25 23:04:26
+ * @LastEditTime: 2022-03-26 23:22:14
  * @FilePath: \wx_RoomOrder\wxRoomOrderfont\pages\user\user.js
  * @Description: 
  * @
@@ -62,25 +62,67 @@ Page({
             openid:wx.getStorageSync('openid'),
             ...res.userInfo
           }
-          request({url:"/updateuser",method: "post",data:data})
+          request({url:"/user/updateuser",method: "post",data:data})
           .then(result=>{
             console.log(result)
+            this.setData({
+              userInfo:result.data.responsedata
+            })
+            wx.setStorageSync("userinfo",result.data.responsedata)
           })
         }
       })
     }
     
   },
+
   showorderrules(){
+    var that = this;
     wx.navigateTo({
-      url: '../orderrule/orderrule?id=1',
+      url: `../orderrule/orderrule?isreadedrules=${this.data.userInfo.isreadedrules}`,
       events: {
         // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
         acceptDataFromOpenedPage: function(data) {
           console.log(data)
-        },
-        someEvent: function(data) {
+          if(data.isreadedrules==1){
+            request({url:"/user/modifyreaded",method:"post",data:{'openid':that.data.userInfo.uopenid}})
+            .then(result=>{
+              that.setData({
+                userInfo:result.data.responsedata
+              })
+              wx.setStorageSync("userinfo",result.data.responsedata)
+            })
+          }
+        }
+      },
+      success: function(res) {
+        // 通过eventChannel向被打开页面传送数据
+        res.eventChannel.emit('acceptDataFromOpenerPage', { data: 'user发过去的' })
+      }
+    })
+  },
+
+  // 我的信息编写
+  editmyinfo(){
+    var that = this;
+    wx.navigateTo({
+      url: `../edituserinfo/edituserinfo?isbasaceinfo=${this.data.userInfo.isbasaceinfo}&&openid=${this.data.userInfo.uopenid}`,
+      events: {
+        // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
+        acceptDataFromOpenedPage: function(data) {
           console.log(data)
+          if(data.isbasaceinfo==1){
+            request({url:"/user/edituserinfo",method:"post",data:{'openid':that.data.userInfo.uopenid,...data.userinfo,'isbasaceinfo':data.isbasaceinfo}})
+            .then(result=>{
+              if(result.data.status){
+                that.setData({
+                  userInfo:result.data.responsedata
+                })
+                wx.setStorageSync("userinfo",result.data.responsedata)
+              }
+            })
+          }
+          
         }
       },
       success: function(res) {

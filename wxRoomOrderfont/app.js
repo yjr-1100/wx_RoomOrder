@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-03-21 22:06:52
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-03-25 22:41:37
+ * @LastEditTime: 2022-03-26 15:51:28
  * @FilePath: \wx_RoomOrder\wxRoomOrderfont\app.js
  * @Description: 
  * @
@@ -24,7 +24,7 @@ App({
           console.log(res.code);
           var data={ code: res.code  }
           var myheader={  'content-type': 'application/json'}
-          request({url:"/getopenid",data:data,method:"GET",header:myheader})
+          request({url:"/user/getopenid",data:data,method:"GET",header:myheader})
           .then(result=>{
             console.log(result)
             var openid = result.data.openid
@@ -35,7 +35,7 @@ App({
               title: '网络错误',
               icon: 'error',//
               mask:true,
-              duration: 1500
+              duration: 1000
             })
           })
         } else {

@@ -4,7 +4,7 @@
  * @Author: YJR-1100
  * @Date: 2022-03-25 00:00:14
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-03-25 17:19:34
+ * @LastEditTime: 2022-03-27 00:04:24
  * @FilePath: \wx_RoomOrder\wxRoomOrderfont\pages\roomdetail\roomdetail.js
  * @Description: 
  * @
@@ -74,7 +74,6 @@ Page({
     })
     
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -115,6 +114,7 @@ Page({
         wx.showToast({
           title: '改教室已被借用',
           icon: 'error',//
+          mask:true,
           duration: 1000
         })
       }else{
