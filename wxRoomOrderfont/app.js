@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-03-21 22:06:52
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-03-26 15:51:28
+ * @LastEditTime: 2022-03-27 20:30:08
  * @FilePath: \wx_RoomOrder\wxRoomOrderfont\app.js
  * @Description: 
  * @
@@ -35,7 +35,7 @@ App({
               title: '网络错误',
               icon: 'error',//
               mask:true,
-              duration: 1000
+              duration: 800
             })
           })
         } else {

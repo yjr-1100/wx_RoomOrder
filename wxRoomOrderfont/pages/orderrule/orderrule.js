@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-03-24 13:39:31
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-03-26 19:49:47
+ * @LastEditTime: 2022-03-27 20:30:44
  * @FilePath: \wx_RoomOrder\wxRoomOrderfont\pages\orderrule\orderrule.js
  * @Description: 
  * @
@@ -78,6 +78,7 @@ Page({
       wx.showToast({
         title: '您需要将须知阅读至最后一条',
         icon: 'none',
+        mask:true,
         duration: 2000//持续的时间
       })
     }else if(!this.data.chboxchecked){
@@ -85,6 +86,7 @@ Page({
       wx.showToast({
         title: '您需要勾选上方的承诺',
         icon: 'none',
+        mask:true,
         duration: 2000//持续的时间
       })
     }

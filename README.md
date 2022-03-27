@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-03-21 20:06:11
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-03-27 00:16:16
+ * @LastEditTime: 2022-03-27 22:21:42
  * @FilePath: \wx_RoomOrder\README.md
  * @Description: 
  * 
@@ -34,9 +34,11 @@
 
 5. :clock10: 更新教室的接口
 
-5. :clock10: 获取所有教室信息
+5. :heavy_check_mark: 获取所有教室信息
 
-6. :clock10: 预约记录查询接口
+6. :heavy_check_mark: 教室可用时间查询接口
+
+6. :heavy_check_mark: 预约记录查询接口
 
 7. :clock10: 预约审核接口
 
@@ -60,9 +62,9 @@
 
     2.  :clock10: 如果是其他用途，则使用完善用户信息的接口，用户填写并提交后才可以进行教室预约
 
-3. :clock10: 教室预约，选择时间段，填写必要信息，提交后等待审核
+3. :heavy_check_mark: 教室预约，选择时间段，填写必要信息，提交后等待审核
 
-4. :clock10: 已预约信息查看，可以看到审核状态
+4. :heavy_check_mark: 已预约信息查看，可以看到审核状态
 
 5. :clock10: 轮播图动态更新后可以进行对应信息的展示
 
@@ -70,6 +72,8 @@
 ## web端设计
 
 ### 需求
+
+1. :clock10: 审核人员和超级管理员登录
 
 1. :clock10: 可以更新教室信息
 

@@ -4,13 +4,17 @@
  * @Author: YJR-1100
  * @Date: 2022-03-25 00:00:14
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-03-27 00:04:24
+ * @LastEditTime: 2022-03-27 21:34:34
  * @FilePath: \wx_RoomOrder\wxRoomOrderfont\pages\roomdetail\roomdetail.js
  * @Description: 
  * @
  * @Copyright (c) 2022 by yjr-1100/CSU, All Rights Reserved. 
  */
 // pages/roomdetail/roomdetail.js
+const app = getApp()
+
+import {request} from "../../request/index.js"  
+import {formatTime,formatDate} from "../../utils/util.js"
 Page({
 
   /**
@@ -20,6 +24,9 @@ Page({
     maxlength:256,
     currentlength:0,
     bodyheight:0,
+    roomusage:"",
+    autograph:"",//负责人签字的图片 如果不是内部人员需要这个
+    chosedtime:"",
     room:{
       "detailimage":["../../Images/咨询室.jpg","../../Images/会议室.jpg"],
       "name":"咨询室",
@@ -28,34 +35,8 @@ Page({
     },
     canbeuserdtime:[
     {
-      "usetime":"8:00-9:00",
-      "status":0
-    },{
-      "usetime":"9:00-10:00",
-      "status":1
-    },{
-      "usetime":"10:00-11:00",
-      "status":1
-    },{
-      "usetime":"11:00-12:00",
-      "status":0
-    },{
-      "usetime":"14:00-15:00",
-      "status":0
-    },{
-      "usetime":"15:00-16:00",
-      "status":1
-    },{
-      "usetime":"16:00-17:00",
-      "status":0
-    },{
-      "usetime":"17:00-18:00",
-      "status":1
-    },{
-      "usetime":"19:00-20:00",
-      "status":0
-    },{
-      "usetime":"20:00-21:00",
+      "bgintime":"8:00",
+      "endtime":"9:00",
       "status":0
     }
     ]
@@ -66,13 +47,25 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    var that = this
     const eventChannel = this.getOpenerEventChannel()
     // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
-    eventChannel.on('acceptDataFromOpenerPage', function(data) {
+    eventChannel.on('classdata', function(data) {
       console.log(data)
+      that.setData({
+        [`room.detailimage`]:data.data.imageurl.filter((x) => x !== ''),
+        [`room.name`]:data.data.name,
+        [`room.adress`]:data.data.adress,
+        [`room.describe`]:data.data.describe,
+        [`room.rid`]:data.data.rid,
+        rcanbeusetimes:data.data.rcanbeusetimes
+      })
+      // console.log(...data.data.imageurl)
+
+      // 得到该教室今天已经预约的时间段
+      getroomusedtime(that,data.data.rid,formatDate(new Date()))
       
     })
-    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -80,6 +73,7 @@ Page({
   onReady: function () {
 
   },
+
     //点击轮播图放大预览
   handlePrevewImage(e){
     // 构造要预览的图片数组
@@ -96,7 +90,8 @@ Page({
   useredfoinput(e){
     console.log(e)
     this.setData({
-      currentlength:parseInt(e.detail.value.length)
+      currentlength:parseInt(e.detail.value.length),
+      roomusage:`${e.detail.value}`
     })
   },
   chosetime(e){
@@ -112,7 +107,7 @@ Page({
       if(this.data.canbeuserdtime[currentindex].status==1){
         //提示不可选
         wx.showToast({
-          title: '改教室已被借用',
+          title: '该教室已被借用',
           icon: 'error',//
           mask:true,
           duration: 1000
@@ -120,14 +115,107 @@ Page({
       }else{
         // 变成选中状态
         this.setData({
-          [`canbeuserdtime[${currentindex}].status`]:2
+          [`canbeuserdtime[${currentindex}].status`]:2,
+          chosedtime:this.data.canbeuserdtime[currentindex].bgintime+'-'+this.data.canbeuserdtime[currentindex].endtime
         })
       }
     }
   },
   // 点击立即预约的处理事件
   clickbtn(e){
+    var that = this
     console.log(e)
+    var user = wx.getStorageSync('userinfo')
+    if(!user){
+      wx.showModal({
+        title: '提示',
+        content: '您需要登录并完善个人信息',
+        mask:true,
+        success (res) {
+          if (res.confirm) {
+            //点击确定后跳到tabbar登录页面
+            wx.switchTab({
+              url: '/pages/user/user'
+            })
+          }
+        }
+      })
+    }else if(!user.schoolid&&
+      !user.uname&&
+      !user.uphonenum&&
+      !user.profassionclass){
+        wx.showModal({
+          title: '提示',
+          content: '请完善个人信息',
+          mask:true,
+          success (res) {
+            if (res.confirm) {
+              //点击确定后跳到tabbar登录页面
+              wx.switchTab({
+                url: '/pages/user/user'
+              })
+            }
+          }
+        })
+    }else if(!this.data.roomusage){//检查教室用途没有有内容
+      wx.showToast({
+        title: '请填写教室用途',
+        icon: 'error',//
+        mask:true,
+        duration: 800
+      })
+    }else if(!this.data.chosedtime){
+      wx.showToast({
+        title: '请选择使用时间',
+        icon: 'error',//
+        mask:true,
+        duration: 800
+      })
+    }
+    else{
+      // 得到数据
+      var data = {
+        roomusage:this.data.roomusage,
+        room_id:this.data.room.rid,
+        usingtime:this.data.chosedtime,
+        user_id:user.uid
+      }
+      // console.log(data)
+      // 发送请求
+      request({url:"/orderitems/makeorder",method:"POST",data:data})
+      .then(result=>{
+        console.log(result)
+        if(result.data.code==1){
+          wx.showModal({
+            title: '提示',
+            content: '申请成功，请在我的预约中查看审核结果',
+            mask:true,
+            success (res) {
+              if (res.confirm) {
+                //跳到我的预约
+                console.log(wx.getStorageSync('userInfo'))
+                wx.redirectTo({
+                  url: `../myorders/myorders?uid=${user.uid}`
+                })
+              }
+            },fail(){
+              wx.navigateBack({
+                delta:1
+              })
+            }
+          })
+        }else{
+          wx.showToast({
+            title: '网络错误',
+            icon: 'error',//
+            mask:true,
+            duration: 800
+          })
+        }
+      })
+    }
+    
+    
   },
   /**
    * 生命周期函数--监听页面显示
@@ -162,6 +250,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    getroomusedtime(this,this.data.room.rid,formatDate(new Date()))
 
   },
 
@@ -169,7 +258,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
   },
 
   /**
@@ -179,3 +267,61 @@ Page({
 
   }
 })
+//formatDate(new Date())
+function getroomusedtime(that,rid,date){
+  request({url:"/orderitems/roomusertoday",method:"GET",data:{rid:rid,date:date}})
+  .then(result=>{
+    var usedtimelist = []
+    var canbeuserdtime = []
+    console.log(result)
+    if(result.data.code==1){
+      usedtimelist = result.data.responsedata.sort(
+        (a,b)=>{
+          if(a.length<b.length) return -1
+          else return a<b?-1:1
+        }
+      )
+      that.setData({
+        usedtimelist:usedtimelist
+      })
+    } 
+    else{
+      wx.showModal({
+        title: '提示',
+        content: '可用时间获取失败请刷新重试',
+        success (res) {
+          if (res.confirm) {
+            getroomusedtime(that,rid,date)
+          } else if (res.cancel) {
+            wx.navigateBack({
+              delta: 1
+            })
+          }
+        }
+      })
+    }
+    let j=0
+    for(let i = 0;i<that.data.rcanbeusetimes.length;i++){
+      if(that.data.rcanbeusetimes[i]){
+        if(j<usedtimelist.length&&that.data.rcanbeusetimes[i]==usedtimelist[j]){
+          canbeuserdtime.push({
+            "bgintime":that.data.rcanbeusetimes[i].split('-')[0],
+            "endtime":that.data.rcanbeusetimes[i].split('-')[1],
+            "status":1
+          })
+          j++
+        }
+        else{
+          canbeuserdtime.push({
+            "bgintime":that.data.rcanbeusetimes[i].split('-')[0],
+            "endtime":that.data.rcanbeusetimes[i].split('-')[1],
+            "status":0
+          })
+        }
+      }
+    }
+    that.setData({
+      canbeuserdtime
+    })
+  })
+}

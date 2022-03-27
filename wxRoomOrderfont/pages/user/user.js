@@ -4,7 +4,7 @@
  * @Author: YJR-1100
  * @Date: 2022-03-21 23:17:31
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-03-26 23:22:14
+ * @LastEditTime: 2022-03-27 20:29:04
  * @FilePath: \wx_RoomOrder\wxRoomOrderfont\pages\user\user.js
  * @Description: 
  * @
@@ -31,6 +31,9 @@ Page({
    */
   onLoad: function (options) {
     console.log("111")
+    if(!this.data.hasUserInfo){
+      wx.removeStorageSync("userinfo")
+    }
   },
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
@@ -42,6 +45,7 @@ Page({
       wx.showModal({
         title: '提示',
         content: '网络错误请清理后台后重试',
+        mask:true,
         success (res) {
           if (res.confirm) {
             console.log('用户点击确定')
@@ -65,10 +69,21 @@ Page({
           request({url:"/user/updateuser",method: "post",data:data})
           .then(result=>{
             console.log(result)
-            this.setData({
-              userInfo:result.data.responsedata
-            })
-            wx.setStorageSync("userinfo",result.data.responsedata)
+            if(result.data.code==1){
+              this.setData({
+                userInfo:result.data.responsedata
+              })
+              wx.setStorageSync("userinfo",result.data.responsedata)
+            }
+            else{
+              wx.showToast({
+                title: 'no openid',
+                icon: 'error',//
+                mask:true,
+                duration: 800
+              })
+            }
+            
           })
         }
       })
@@ -87,10 +102,20 @@ Page({
           if(data.isreadedrules==1){
             request({url:"/user/modifyreaded",method:"post",data:{'openid':that.data.userInfo.uopenid}})
             .then(result=>{
-              that.setData({
-                userInfo:result.data.responsedata
-              })
-              wx.setStorageSync("userinfo",result.data.responsedata)
+              if(result.data.code==1){
+                that.setData({
+                  userInfo:result.data.responsedata
+                })
+                wx.setStorageSync("userinfo",result.data.responsedata)
+              }else{
+                wx.showToast({
+                  title: '写入数据库失败',
+                  icon: 'error',//
+                  mask:true,
+                  duration: 800
+                })
+              }
+              
             })
           }
         }
@@ -101,7 +126,12 @@ Page({
       }
     })
   },
-
+  //我的预约
+  myorders(e){
+    wx.navigateTo({
+      url: `../myorders/myorders?uid=${this.data.userInfo.uid}`
+    })
+  },
   // 我的信息编写
   editmyinfo(){
     var that = this;
@@ -119,6 +149,13 @@ Page({
                   userInfo:result.data.responsedata
                 })
                 wx.setStorageSync("userinfo",result.data.responsedata)
+              }else{
+                wx.showToast({
+                  title: '更新失败',
+                  icon: 'error',//
+                  mask:true,
+                  duration: 800
+                })
               }
             })
           }

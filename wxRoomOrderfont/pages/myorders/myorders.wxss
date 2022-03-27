@@ -31,16 +31,32 @@
 .orderlists .orderitem .icon-daishenhe {
   color: #f5aa47;
 }
+.orderlists .orderitem .usingtime {
+  min-height: 7.5vw;
+  height: auto;
+  align-items: flex-start;
+  padding-top: 1vw;
+}
 .orderlists .orderitem view {
   font-size: 4.5vw;
   height: 7.5vw;
   display: flex;
   align-items: center;
+  flex-direction: row;
 }
 .orderlists .orderitem view text {
   margin: 0 2vw 0 1vw;
   font-weight: 500;
   font-size: 5vw;
+}
+.orderlists .orderitem view view {
+  height: auto;
+}
+.orderlists .orderitem view .tt {
+  flex: 2;
+}
+.orderlists .orderitem view .t {
+  flex: 5;
 }
 .orderlists .orderitem view .icon-jiaoshi {
   color: #fcae1e;

@@ -20,13 +20,13 @@
         </view>
         <view class="usingtime">
             <text class="iconfont icon-shijiantemai "> </text>
-            使用时间    
-            {{item.usingtime}}
+            <view class="tt">使用时间 </view>   
+            <view class="t">{{item.usingtime}}</view>
         </view>
         <view class="ordertime">
             <text class="iconfont icon-shijian1 "> </text>
-            申请时间    
-            {{item.ordertime}}
+            <view  class="tt">申请时间  </view>  
+            <view class="t">{{item.ordertime}}</view>
         </view>
     </view>
 </view>
