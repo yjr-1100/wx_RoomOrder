@@ -1,3 +1,13 @@
+/**
+ * @Author: YJR-1100
+ * @Date: 2022-04-11 19:52:58
+ * @LastEditors: YJR-1100
+ * @LastEditTime: 2022-04-11 19:58:24
+ * @FilePath: \webformanager\.eslintrc.js
+ * @Description:
+ * @
+ * @Copyright (c) 2022 by yjr-1100/CSU, All Rights Reserved.
+ */
 module.exports = {
   root: true,
   env: {
@@ -12,6 +22,7 @@ module.exports = {
   },
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off'
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'space-before-function-paren': ['error', 'never']
   }
 }
