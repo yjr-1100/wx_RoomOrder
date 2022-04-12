@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-04-11 17:50:51
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-11 19:59:22
+ * @LastEditTime: 2022-04-12 23:03:26
  * @FilePath: \webformanager\src\views\Myhome.vue
  * @Description:
  *
@@ -10,12 +10,22 @@
 -->
 
 <template>
-  <div class="yjr-homecontant">home页面</div>
+  <div class="yjr-homecontant">
+    <!-- 头部 -->
+    <myhead></myhead>
+    <!-- 左侧边栏 -->
+    <!-- 右边主体 -->
+  </div>
 </template>
 
 <script>
+import myhead from '@/components/Myhead.vue'
 export default {
-  name: 'yjr-home'
+  name: 'yjr-home',
+  // 注册组件
+  components: {
+    myhead
+  }
 }
 </script>
 

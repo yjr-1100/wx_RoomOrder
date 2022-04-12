@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-04-11 19:52:58
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-11 20:01:36
+ * @LastEditTime: 2022-04-12 22:10:09
  * @FilePath: \webformanager\src\main.js
  * @Description:
  * @
@@ -11,10 +11,18 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import axios from 'axios'
+import qs from 'qs'
 
 // 导入样式
 import './assets/css/bootstrap.css'
 import './index.css'
+
+axios.defaults.baseURL = 'http://127.0.0.1:5000/api/v1'
+axios.defaults.timeout = 5000
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
+Vue.prototype.$http = axios
+Vue.prototype.$qs = qs
 
 Vue.config.productionTip = false
 

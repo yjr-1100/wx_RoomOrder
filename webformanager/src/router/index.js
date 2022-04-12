@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-04-11 19:52:58
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-11 19:57:24
+ * @LastEditTime: 2022-04-12 22:58:25
  * @FilePath: \webformanager\src\router\index.js
  * @Description:
  * @
@@ -10,6 +10,7 @@
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+// import pathArr from '@/router/pathArr.js'
 
 import Login from '@/views/Mylogin.vue'
 import Home from '@/views/Myhome.vue'
@@ -17,14 +18,14 @@ import Home from '@/views/Myhome.vue'
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/', redirect: '/login' },
+  { path: '/', redirect: '/home' },
   // 登录的路由规则
   { path: '/login', component: Login },
   // 后台主页的路由规则
   {
     path: '/home',
-    component: Home,
-    redirect: '/home/users'
+    component: Home
+    // redirect: '/home/users'
     // children: [
     //   { path: 'users', component: Users },
     //   { path: 'rights', component: Rights },
@@ -40,5 +41,19 @@ const routes = [
 const router = new VueRouter({
   routes
 })
+
+// 全局前置守卫
+// router.beforeEach(function (to, from, next) {
+//   if (pathArr.indexOf(to.path) !== -1) {
+//     const manager = localStorage.getItem('manager')
+//     if (manager) {
+//       next()
+//     } else {
+//       next('/login')
+//     }
+//   } else {
+//     next()
+//   }
+// })
 
 export default router
