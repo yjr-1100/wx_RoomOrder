@@ -4,7 +4,7 @@
 # @Author: YJR-1100
 # @Date: 2022-03-22 15:53:04
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-04-12 14:53:51
+# @LastEditTime: 2022-04-13 21:46:49
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\apps\users\models.py
 # @Description:
 # @
@@ -18,20 +18,14 @@ from datetime import datetime
 
 class Users(db.Model):
     # ---------------------------------------------------------------
-
     # 用户id
     uid = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    # 用户等级 普通用户 0 管理员 1 超级管理员 2
-    ulevel = db.Column(db.Integer, default=0)
     # 用户openid 28位，我们多给几位
     uopenid = db.Column(db.String(64), nullable=True)
     # 昵称
     nickname = db.Column(db.String(64), nullable=True)
     # 头像
     avatarUrl = db.Column(db.String(1024), nullable=True)
-    # 密码 普通用户没有
-    upassword = db.Column(db.String(128), nullable=True)
-
     # ----------------------------------------------------------
     # 姓名
     uname = db.Column(db.String(64), nullable=True)
@@ -41,9 +35,11 @@ class Users(db.Model):
     schoolid = db.Column(db.String(64), nullable=True)
     # 专业班级
     profassionclass = db.Column(db.String(256), nullable=True)
-
     # ------------------------------------------------------------
-    # 是否内部人员认证 0:NO 1:YES
+    # 所属组织
+    orgid = db.Column(db.Integer, db.ForeignKey(
+        'organizations.orgid'), nullable=True)
+    # 是否内部人员认证 0:NO 1:YES -1拒绝申请 2 提交申请
     isinsider = db.Column(db.Integer, default=0)
     # 是否完善身份信息 就是填写姓名学号手机号等 0:NO 1:YES
     isbasaceinfo = db.Column(db.Integer, default=0)
@@ -60,7 +56,6 @@ class Users(db.Model):
 
     def todict(self):
         userdict = {}
-        userdict['ulevel'] = self.ulevel
         userdict['uid'] = self.uid
         userdict['uopenid'] = self.uopenid
         userdict['nickname'] = self.nickname

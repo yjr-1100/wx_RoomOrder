@@ -4,7 +4,7 @@
 # @Author: YJR-1100
 # @Date: 2022-03-22 16:15:12
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-04-12 22:20:11
+# @LastEditTime: 2022-04-13 21:14:33
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\apps\users\api.py
 # @Description:
 # @
@@ -117,28 +117,3 @@ def edituserinfo():
 
 # isinsider
 # 内部人员认证
-
-# 管理员登录
-
-
-@user_bp.route('/managerlogin', methods=['POST'])
-def managerlogin():
-    data = request.get_json()
-    print(data)
-    try:
-        username = data['username']
-        password = data['password']
-    except:
-        return falseReturn(msg="缺少必要参数")
-    user = Users.query.filter(
-        and_(Users.uphonenum == username, Users.upassword == password)).first()
-    if user is None:
-        return trueReturn(data='', code=0, msg='用户名或密码错误')
-    try:
-        jsonuser = json.dumps(user, cls=AlchemyEncoder)
-        dictuser = json.loads(jsonuser)
-        print(dictuser)
-        return trueReturn(data=dictuser)
-    except Exception as e:
-        print(e)
-        return falseReturn(msg="数据库错误")

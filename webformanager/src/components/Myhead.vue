@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-04-12 22:59:28
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-13 00:18:11
+ * @LastEditTime: 2022-04-13 14:53:03
  * @FilePath: \webformanager\src\components\Myhead.vue
  * @Description:
  *
@@ -27,12 +27,13 @@ export default {
 <style lang="less" scoped>
 .yjr-headcontant {
   width: 100%;
-  height: 10vh;
+  height: 68px;
   position: relative;
   padding: 10px 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-shadow: 0 3px 10px#202646;
   .leftlogo {
     height: 100%;
     margin: 0 10px;
@@ -69,14 +70,15 @@ export default {
     background: none;
     border: none;
     margin: 0 10px;
-    font-size: 1.3vw;
-    color: #54679b;
+    font-size: 1.1vw;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: rgb(193, 193, 193);
 
     &:focus {
       outline: none;
     }
     &:hover {
-      color: rgb(193, 193, 193);
+      color: rgb(154, 154, 154);
     }
   }
 }
