@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-04-13 10:34:12
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-14 00:22:06
+ * @LastEditTime: 2022-04-14 16:28:47
  * @FilePath: \webformanager\src\views\innerperson.vue
  * @Description:
  *
@@ -36,7 +36,7 @@
               <el-tag :type="scope.row.isinsider === 2 ? 'info' : 'primary'" disable-transitions>{{ scope.row.isinsider === 2 ? '待审核' : '通过' }}</el-tag>
             </template>
           </el-table-column>
-          <el-table-column label="操作" width="150">
+          <el-table-column fixed="right" label="操作" width="150">
             <template slot-scope="scope">
               <el-button v-if="scope.row.isinsider === 2" type="success" size="mini" @click="handlechange(scope.$index, scope.row, 1)">通过</el-button>
               <el-button v-if="scope.row.isinsider === 2" type="warning" size="mini" @click="handlechange(scope.$index, scope.row, -1)">拒绝</el-button>

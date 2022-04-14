@@ -4,7 +4,7 @@
 # @Author: YJR-1100
 # @Date: 2022-03-22 16:23:51
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-04-13 20:09:59
+# @LastEditTime: 2022-04-14 14:38:01
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\apps\rooms\api.py
 # @Description:
 # @
@@ -26,16 +26,15 @@ rooms_bp = Blueprint('rooms', __name__)
 @rooms_bp.route('/getrooms', methods=['Get'])
 def getrooms():
     try:
-        # request.get_json()
         orgid = request.args.get('orgid')
-        print(orgid)
     except:
         orgid = -1
-    if orgid == -1:
+    if orgid is None:
         try:
             rooms = Rooms.query.filter(Rooms.isdelet == 1).all()
         except:
             return falseReturn(msg="拉取教室信息错误", code=-1)
+
     else:
         try:
             rooms = Rooms.query.filter(
@@ -47,6 +46,7 @@ def getrooms():
         print(room.rphotoURL.split(';'))
         rinfo = {}
         rinfo['rid'] = room.rid
+        rinfo['orgid'] = room.orgid
         rinfo['name'] = room.rname
         rinfo['adress'] = room.raddress
         rinfo['describe'] = room.rdescribe

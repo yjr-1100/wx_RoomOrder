@@ -4,7 +4,7 @@
  * @Author: YJR-1100
  * @Date: 2022-03-25 00:00:14
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-03-27 21:34:34
+ * @LastEditTime: 2022-04-14 14:48:40
  * @FilePath: \wx_RoomOrder\wxRoomOrderfont\pages\roomdetail\roomdetail.js
  * @Description: 
  * @
@@ -58,6 +58,7 @@ Page({
         [`room.adress`]:data.data.adress,
         [`room.describe`]:data.data.describe,
         [`room.rid`]:data.data.rid,
+        [`room.orgid`]:data.data.orgid,
         rcanbeusetimes:data.data.rcanbeusetimes
       })
       // console.log(...data.data.imageurl)
@@ -177,10 +178,11 @@ Page({
       var data = {
         roomusage:this.data.roomusage,
         room_id:this.data.room.rid,
+        room2orgid:this.data.room.orgid,
         usingtime:this.data.chosedtime,
         user_id:user.uid
       }
-      // console.log(data)
+      console.log(data)
       // 发送请求
       request({url:"/orderitems/makeorder",method:"POST",data:data})
       .then(result=>{
