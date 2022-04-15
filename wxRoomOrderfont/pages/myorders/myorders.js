@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-03-25 17:21:08
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-03-27 22:01:11
+ * @LastEditTime: 2022-04-15 21:40:18
  * @FilePath: \wx_RoomOrder\wxRoomOrderfont\pages\myorders\myorders.js
  * @Description: 
  * @
@@ -44,7 +44,16 @@ Page({
     })
     getmyorders(this,options)
   },
-
+  showdetailoforder(e){
+    console.log(e)
+    wx.navigateTo({
+      url: `../orderdetails/orderdetails`,
+      success: function(res) {
+        // 通过eventChannel向被打开页面传送数据
+        res.eventChannel.emit('orderdata', { data:e.currentTarget.dataset.item })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -101,7 +110,7 @@ function getmyorders(that,options){
     .then(result=>{
       console.log(result)
       if(result.data.code==1){
-        console.log(result.data.responsedata)
+        // console.log(result.data.responsedata)
         that.setData({
           orderlist:result.data.responsedata.sort(
             (a,b)=>{

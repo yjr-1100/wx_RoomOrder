@@ -1,31 +1,24 @@
-
 <view class="orderlists" hover-class="none" hover-stop-propagation="false">
-    <view class="orderitem" 
-    hover-class="none" 
-    hover-stop-propagation="false"
-    wx:for="{{orderlist}}"
-    wx:for-index="index"
-    wx:for-item="item"
-    data-index="{{index}}">
+    <view class="orderitem" hover-class="none" hover-stop-propagation="false" wx:for="{{orderlist}}" wx:for-index="index" wx:for-item="item" data-index="{{index}}" bindtap="showdetailoforder" data-item="{{item}}">
         <text wx:if="{{item.status==0}}" class="status iconfont icon-weitongguo"></text>
         <text wx:elif="{{item.status==1}}" class="status iconfont icon-yitongguo"></text>
         <text wx:else class="status iconfont icon-daishenhe"></text>
         <view class="roomname">
-            <text class="iconfont icon-jiaoshi "> </text>
+            <text class="iconfont icon-jiaoshi "></text>
             {{item.roomname}}
         </view>
         <view class="ordertime">
-            <text class="iconfont icon-weizhi "> </text>
+            <text class="iconfont icon-weizhi "></text>
             {{item.address}}
         </view>
         <view class="usingtime">
-            <text class="iconfont icon-shijiantemai "> </text>
-            <view class="tt">使用时间 </view>   
+            <text class="iconfont icon-shijiantemai "></text>
+            <view class="tt">使用时间</view>
             <view class="t">{{item.usingtime}}</view>
         </view>
         <view class="ordertime">
-            <text class="iconfont icon-shijian1 "> </text>
-            <view  class="tt">申请时间  </view>  
+            <text class="iconfont icon-shijian1 "></text>
+            <view class="tt">申请时间</view>
             <view class="t">{{item.ordertime}}</view>
         </view>
     </view>

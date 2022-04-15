@@ -5,6 +5,7 @@
     "pages/orderrule/orderrule",
     "pages/roomdetail/roomdetail",
     "pages/myorders/myorders",
+    "pages/orderdetails/orderdetails",
     "pages/innerverify/innerverify",
     "pages/edituserinfo/edituserinfo"
   ],

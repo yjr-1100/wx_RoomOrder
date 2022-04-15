@@ -4,7 +4,7 @@
 # @Author: YJR-1100
 # @Date: 2022-03-22 16:23:55
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-04-15 17:27:31
+# @LastEditTime: 2022-04-15 21:45:33
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\apps\orderitem\api.py
 # @Description:
 # @
@@ -136,6 +136,8 @@ def getmyorders():
     for item in orderitems:
         order = {}
         order['oid'] = item.oid
+        order['uphonenum'] = Users.query.get(item.user_id).uphonenum
+        order['schoolid'] = Users.query.get(item.user_id).schoolid
         order['username'] = Users.query.get(item.user_id).uname
         order['ordertime'] = str(item.odatetime)
         order['roomname'] = Rooms.query.get(item.room_id).rname
@@ -147,8 +149,14 @@ def getmyorders():
             order['ochecktime'] = str(item.ochecktime)
         if(item.checker_id):
             order['checkername'] = Managers.query.get(item.checker_id).mname
+        if(item.rejectreasion):
+            order['rejectreasion'] = item.rejectreasion
+        if(Users.query.get(item.user_id).isinsider == 1):
+            order['userinner'] = 1
+        else:
+            order['userinner'] = 0
+            order['autograph'] = item.autograph
         orderlist.append(order)
-    # print(orderlist)
     return trueReturn(data=orderlist)
 
 # 得到该教室今天可用时间

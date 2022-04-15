@@ -1,0 +1,115 @@
+.orderdetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  padding-top: 4vw;
+  position: relative;
+}
+.orderdetails .orderdetailscontant {
+  width: 90vw;
+  height: auto;
+  border-radius: 5vw;
+  background-color: #fff;
+  position: relative;
+  color: #472634;
+  padding: 3vw 3vw;
+  margin-bottom: 5vw;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  /*分割线样式*/
+}
+.orderdetails .orderdetailscontant .status {
+  position: absolute;
+  top: 1.5vw;
+  right: 5vw;
+  font-size: 18vw;
+}
+.orderdetails .orderdetailscontant .icon-weitongguo {
+  color: #ff1e44;
+}
+.orderdetails .orderdetailscontant .icon-yitongguo {
+  color: #39b944;
+}
+.orderdetails .orderdetailscontant .icon-daishenhe {
+  color: #f5aa47;
+}
+.orderdetails .orderdetailscontant .usingtime {
+  min-height: 7.5vw;
+  height: auto;
+  align-items: flex-start;
+  padding-top: 1vw;
+}
+.orderdetails .orderdetailscontant #divLine {
+  display: block;
+  background-color: #3f2a339d;
+  width: 100%;
+  height: 1px;
+}
+.orderdetails .orderdetailscontant #btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: blur(0.2vw);
+}
+.orderdetails .orderdetailscontant view {
+  font-size: 4.5vw;
+  min-height: 6.5vw;
+  margin-bottom: 1vw;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+}
+.orderdetails .orderdetailscontant view text {
+  margin: 0 2vw 0 1vw;
+  font-weight: 500;
+  font-size: 5vw;
+}
+.orderdetails .orderdetailscontant view .tt {
+  width: 20vw;
+}
+.orderdetails .orderdetailscontant view .t {
+  flex: 1;
+  height: auto;
+  font-family: 'Courier New', Courier, monospace;
+}
+.orderdetails .orderdetailscontant view .u {
+  flex: 1;
+  margin-left: 3vw;
+}
+.orderdetails .orderdetailscontant view .icon-jiaoshi {
+  color: #fcae1e;
+}
+.orderdetails .orderdetailscontant view .icon-weizhi {
+  color: #f54764;
+}
+.orderdetails .orderdetailscontant view .icon-shijiantemai {
+  color: #5eb0f3;
+}
+.orderdetails .orderdetailscontant view .icon-shenhe1 {
+  color: #80a028;
+}
+.orderdetails .orderdetailscontant view .icon-shijian1 {
+  color: #1f527c;
+}
+.orderdetails .orderdetailscontant view .icon-shenhe {
+  color: #4135e6;
+}
+.orderdetails .orderdetailscontant view .icon-buhegeyuanyindangan {
+  color: #e63553;
+}
+.orderdetails .orderdetailscontant view .icon-wodexuanzhong {
+  color: #c73f71;
+}
+.orderdetails .orderdetailscontant view .icon-huiyuanqia {
+  color: #ff9e01;
+}
+.orderdetails .orderdetailscontant view .icon-banji1 {
+  color: #0062ff;
+}
+.orderdetails .orderdetailscontant view .icon-shouji {
+  color: #b619ff;
+}
+.orderdetails .orderdetailscontant view .icon-yongtu {
+  color: #0062ff;
+}

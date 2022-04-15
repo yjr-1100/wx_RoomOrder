@@ -1,0 +1,65 @@
+<view class="orderdetails" hover-class="none" hover-stop-propagation="false">
+  <view class="orderdetailscontant" hover-class="none" hover-stop-propagation="false">
+    <text wx:if="{{order.status==0}}" class="status iconfont icon-weitongguo"></text>
+    <text wx:elif="{{order.status==1}}" class="status iconfont icon-yitongguo"></text>
+    <text wx:else class="status iconfont icon-daishenhe"></text>
+    <view class="roomname">
+      <text class="iconfont icon-jiaoshi "></text>
+      {{order.roomname}}
+    </view>
+    <view class="ordertime">
+      <text class="iconfont icon-weizhi "></text>
+      {{order.address}}
+    </view>
+    <!-- <span id="divLine"></span> -->
+    <view class="usingtime">
+      <text class="iconfont icon-shijiantemai "></text>
+      <view class="tt">使用时间</view>
+      <view class="t">{{order.usingtime}}</view>
+    </view>
+    <view class="ordertime">
+      <text class="iconfont icon-shijian1 "></text>
+      <view class="tt">申请时间</view>
+      <view class="t">{{order.ordertime}}</view>
+    </view>
+    <view class="checkername">
+      <text class="iconfont icon-shenhe "></text>
+      <view class="tt">审核人</view>
+      <view class="t">{{order.checkername}}</view>
+    </view>
+    <view class="ochecktime">
+      <text class="iconfont icon-shenhe1 "></text>
+      <view class="tt">审核时间</view>
+      <view class="t">{{order.ochecktime}}</view>
+    </view>
+    <view class="rejectreasion" wx:if="{{order.rejectreasion}}">
+      <text class="iconfont icon-buhegeyuanyindangan "></text>
+      <view class="tt">拒绝原因</view>
+      <view class="t">{{order.rejectreasion}}</view>
+    </view>
+    <view class="username" wx:if="{{!zhankai}}">
+      <text class="iconfont icon-wodexuanzhong "></text>
+      <view class="tt">用户姓名</view>
+      <view class="t">{{order.username}}</view>
+    </view>
+    <view class="schoolid" wx:if="{{!zhankai}}">
+      <text class="iconfont icon-huiyuanqia "></text>
+      <view class="tt">用户学号</view>
+      <view class="t">{{order.schoolid}}</view>
+    </view>
+    <view class="uphonenum" wx:if="{{!zhankai}}">
+      <text class="iconfont icon-shouji "></text>
+      <view class="tt">用户手机</view>
+      <view class="t">{{order.uphonenum}}</view>
+    </view>
+    <view class="roomusage" wx:if="{{!zhankai}}">
+      <text class="iconfont icon-yongtu "></text>
+      <view class="tt">教室用途</view>
+      <view class="t">{{order.roomusage}}</view>
+    </view>
+    <span id="btn" bindtap="clickzhankai">
+      <text wx:if="{{zhankai}}" class="iconfont icon-double-arrow-down-full"></text>
+      <text wx:else class="iconfont icon-double-arrow-up-full"></text>
+    </span>
+  </view>
+</view>
