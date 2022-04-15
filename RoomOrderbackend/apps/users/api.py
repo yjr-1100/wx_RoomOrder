@@ -4,7 +4,7 @@
 # @Author: YJR-1100
 # @Date: 2022-03-22 16:15:12
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-04-13 21:14:33
+# @LastEditTime: 2022-04-15 15:48:19
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\apps\users\api.py
 # @Description:
 # @
@@ -117,3 +117,44 @@ def edituserinfo():
 
 # isinsider
 # 内部人员认证
+
+
+@user_bp.route('/submitinnerverify', methods=['POST'])
+def submitinnerverify():
+    data = request.get_json()
+    print(data)
+    try:
+        uid = data['uid']
+    except:
+        return falseReturn(msg="no uid")
+    user = Users.query.filter(Users.uid == uid).first()
+    try:
+        user.isinsider = 2
+        user.orgid = data['orgid']
+        db.session.commit()
+    except Exception as e:
+        print(e)
+        return falseReturn(msg="数据库错误")
+    jsonuser = json.dumps(user, cls=AlchemyEncoder)
+    dictuser = json.loads(jsonuser)
+    return trueReturn(data=dictuser)
+
+
+# 得到用户信息
+@user_bp.route('/getuserinfo', methods=['POST'])
+def getuserinfo():
+    data = request.get_json()
+    print(data)
+    try:
+        uid = data['uid']
+    except:
+        return falseReturn(msg="no openid")
+
+    try:
+        user = Users.query.filter(Users.uid == uid).first()
+    except Exception as e:
+        print(e)
+        return falseReturn(msg="数据库错误")
+    jsonuser = json.dumps(user, cls=AlchemyEncoder)
+    dictuser = json.loads(jsonuser)
+    return trueReturn(data=dictuser)

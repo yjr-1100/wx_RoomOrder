@@ -4,7 +4,7 @@
 # @Author: YJR-1100
 # @Date: 2022-04-13 13:58:40
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-04-13 23:51:57
+# @LastEditTime: 2022-04-15 16:25:52
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\apps\managers\api.py
 # @Description:
 # @
@@ -19,7 +19,7 @@ import settings
 from common.result import trueReturn, falseReturn
 from common.sqlalchemy2json import AlchemyEncoder
 from exts import db
-from sqlalchemy import or_, and_
+from sqlalchemy import null, or_, and_
 import requests
 import json
 # from flask_cors import cross_origin
@@ -94,6 +94,8 @@ def updateinnerpersonstate():
     user = Users.query.filter(Users.uid == uid).first()
     try:
         user.isinsider = status
+        if status == 0:
+            user.orgid = None
         db.session.commit()
     except Exception as e:
         print(e)

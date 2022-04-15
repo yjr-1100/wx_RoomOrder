@@ -2,14 +2,14 @@
  * @Author: YJR-1100
  * @Date: 2022-03-21 20:06:11
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-03-27 22:21:42
+ * @LastEditTime: 2022-04-15 16:50:32
  * @FilePath: \wx_RoomOrder\README.md
  * @Description: 
  * 
  * Copyright (c) 2022 by yjr-1100/CSU, All Rights Reserved. 
 -->
 
-# 校园教室预约小程序  ![](https://img.shields.io/badge/flask-v1.1.2-blue) ![](https://img.shields.io/badge/Python-v3.9.6-blue) 
+# 校园教室预约小程序  ![](https://img.shields.io/badge/flask-v1.1.2-blue) ![](https://img.shields.io/badge/Python-v3.9.6-blue) ![](https://img.shields.io/badge/%40vue%2Fcil-v5.0.4-orange)
 
 ## 后端设计
 
@@ -28,7 +28,7 @@
 
     2. :heavy_check_mark: 更新个人信息
 
-    3. :clock10: 更新身份认证
+    3. :heavy_check_mark: 更新身份认证
 
 4. :clock10: 创建教室的接口
 
@@ -40,7 +40,7 @@
 
 6. :heavy_check_mark: 预约记录查询接口
 
-7. :clock10: 预约审核接口
+7. :heavy_check_mark: 预约审核接口
 
 8. :heavy_check_mark: 获取轮播图的接口
 
@@ -56,28 +56,32 @@
 
 3. :heavy_check_mark: 阅读借阅须知
 
-2. :clock10: 身份认证，
+2. :heavy_check_mark: 身份认证，提供不同认证方式，根据需要进行选择
 
-    1.  :clock10: 认证是本校学生/教师，并得到相关身份信息（学校不同需要调整user数据库字段）
+    1.  :worried: 认证是本校学生/教师，并得到相关身份信息（学校不同需要调整user数据库字段）这个需要等官方配合，暂时无法完成
+   
+    2.  :heavy_check_mark: 选择对应组织，由组织管理员来确认通过
 
-    2.  :clock10: 如果是其他用途，则使用完善用户信息的接口，用户填写并提交后才可以进行教室预约
+    3.  :stuck_out_tongue_winking_eye: 如果是其他用途，则使用完善用户信息的接口，用户填写并提交后才可以进行教室预约 （可以使用和上面`2` 相同的接口，修改提交数据即可）
 
 3. :heavy_check_mark: 教室预约，选择时间段，填写必要信息，提交后等待审核
 
 4. :heavy_check_mark: 已预约信息查看，可以看到审核状态
 
-5. :clock10: 轮播图动态更新后可以进行对应信息的展示
+5. :dizzy_face: 轮播图动态更新后可以进行对应信息的展示,此项需求需要根据轮播图情况来定
 
 
 ## web端设计
 
+通过vue搭建web端
+
 ### 需求
 
-1. :clock10: 审核人员和超级管理员登录
+1. :heavy_check_mark: 审核人员和超级管理员登录
 
 1. :clock10: 可以更新教室信息
 
-2. :clock10: 进行教室使用的审核
+2. :heavy_check_mark: 进行教室使用的审核
 
 3. :clock10: 进行教室状态的查询
 

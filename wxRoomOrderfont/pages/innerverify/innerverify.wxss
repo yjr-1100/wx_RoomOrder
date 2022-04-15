@@ -1,0 +1,61 @@
+.innerverifycontant picker {
+  width: 90vw;
+  margin: 40vw 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  color: #472634;
+  border-radius: 5vw;
+  position: relative;
+  font-size: 5vw;
+}
+.innerverifycontant picker .picker {
+  width: 100vw;
+  height: 20vw;
+  color: #472634;
+  font-weight: 500;
+  text-align: center;
+  line-height: 20vw;
+  font-size: 5.2vw;
+}
+.innerverifycontant picker .status {
+  position: absolute;
+  top: 0.5vw;
+  right: 5vw;
+  font-size: 18vw;
+}
+.innerverifycontant picker .icon-weitongguo {
+  color: #ff1e44;
+}
+.innerverifycontant picker .icon-yitongguo {
+  color: #39b944;
+}
+.innerverifycontant picker .icon-daishenhe {
+  color: #f5aa47;
+}
+.innerverifycontant button {
+  color: #fff;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 12vw;
+  font-size: 5vw;
+  font-weight: 400;
+  background-color: #f54764;
+  margin: 10vw 5vw;
+  border-radius: 5vw;
+}
+.innerverifycontant button[disabled] {
+  color: #999999 !important;
+  background: #ecebea !important;
+  border-color: #e6e6e6 !important;
+  box-shadow: 0px 3px 14px rgba(49, 49, 49, 0.2);
+}
+.innerverifycontant .button-hover {
+  background-color: #ff5370;
+  color: #fff;
+  box-shadow: 0px 3px 14px rgba(255, 26, 64, 0.616);
+}

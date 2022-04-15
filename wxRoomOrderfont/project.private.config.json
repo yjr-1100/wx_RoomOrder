@@ -41,6 +41,12 @@
           "pathName": "pages/edituserinfo/edituserinfo",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/innerverify/innerverify",
+          "query": "uid=openid",
+          "scene": null
         }
       ]
     }

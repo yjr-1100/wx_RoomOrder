@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-04-13 10:34:12
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-14 16:28:47
+ * @LastEditTime: 2022-04-15 16:28:07
  * @FilePath: \webformanager\src\views\innerperson.vue
  * @Description:
  *
@@ -66,10 +66,15 @@ export default {
       }
       const { data } = await this.$http.post('/manager/updateinnerpersonstate', postdata)
       // console.log(data)
-      this.$message({
-        message: data.msg,
-        type: 'success'
-      })
+      if (data.code === 0) {
+        this.$message.error(data.msg)
+      } else {
+        this.$message({
+          message: data.msg,
+          type: 'success'
+        })
+      }
+
       this.getpeoplelist(2)
     },
     filterTag(value, row) {

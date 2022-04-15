@@ -4,7 +4,7 @@
 # @Author: YJR-1100
 # @Date: 2022-04-13 13:52:57
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-04-13 14:22:27
+# @LastEditTime: 2022-04-15 14:20:53
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\apps\organizations\api.py
 # @Description:
 # @
@@ -24,7 +24,7 @@ import json
 # from flask_cors import cross_origin
 org_bp = Blueprint('orgs', __name__)
 
-# 得到轮播图
+# 得到所有的组织
 
 
 @org_bp.route('/getallorg', methods=['GET'])

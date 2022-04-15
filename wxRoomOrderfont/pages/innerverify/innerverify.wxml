@@ -1,0 +1,10 @@
+<!-- pages/innerverify/innerverify.wxml -->
+<view class="innerverifycontant" hover-class="none" hover-stop-propagation="false">
+  <picker mode="selector" bindchange="bindPickerChange" value="{{index}}" range="{{orglist}}" range-key="orgname">
+    <view class="picker">{{selectorgname}}</view>
+    <text wx:if="{{userInfo.isinsider==-1}}" class="status iconfont icon-weitongguo"></text>
+    <text wx:elif="{{userInfo.isinsider==1}}" class="status iconfont icon-yitongguo"></text>
+    <text wx:elif="{{userInfo.isinsider==2}}" class="status iconfont icon-daishenhe"></text>
+  </picker>
+  <button bindtap="clickbtn" disabled="{{userInfo.isinsider!=0}}">提交申请</button>
+</view>

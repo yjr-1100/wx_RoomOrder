@@ -5,6 +5,7 @@
     "pages/orderrule/orderrule",
     "pages/roomdetail/roomdetail",
     "pages/myorders/myorders",
+    "pages/innerverify/innerverify",
     "pages/edituserinfo/edituserinfo"
   ],
   "window": {

@@ -4,7 +4,7 @@
  * @Author: YJR-1100
  * @Date: 2022-03-21 23:17:31
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-03-27 20:29:04
+ * @LastEditTime: 2022-04-15 16:35:12
  * @FilePath: \wx_RoomOrder\wxRoomOrderfont\pages\user\user.js
  * @Description: 
  * @
@@ -68,7 +68,7 @@ Page({
           }
           request({url:"/user/updateuser",method: "post",data:data})
           .then(result=>{
-            console.log(result)
+            // console.log(result)
             if(result.data.code==1){
               this.setData({
                 userInfo:result.data.responsedata
@@ -132,6 +132,12 @@ Page({
       url: `../myorders/myorders?uid=${this.data.userInfo.uid}`
     })
   },
+  // 身份认证
+  identityverify(e){
+    wx.navigateTo({
+      url: `../innerverify/innerverify?uid=${this.data.userInfo.uid}`
+    })
+  },
   // 我的信息编写
   editmyinfo(){
     var that = this;
@@ -181,6 +187,9 @@ Page({
   onShow: function () {
     // 页面切换 之间切换会输出
     console.log("222")
+    this.setData({
+      userInfo:wx.getStorageSync("userinfo")
+    })
   },
 
   /**
@@ -202,7 +211,22 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+      request({url:"/user/getuserinfo",method: "POST",data:{'uid':this.data.userInfo.uid}})
+      .then(result=>{
+        if(result.data.code==1){
+          this.setData({
+            userInfo:result.data.responsedata
+          })
+          wx.setStorageSync("userinfo",result.data.responsedata)
+        }else{
+          wx.showToast({
+            title: '刷新失败',
+            icon: 'error',//
+            mask:true,
+            duration: 800
+          })
+        }
+      })
   },
 
   /**
