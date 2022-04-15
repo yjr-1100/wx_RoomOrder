@@ -2,16 +2,18 @@
  * @Author: YJR-1100
  * @Date: 2022-03-21 20:06:11
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-15 16:50:32
+ * @LastEditTime: 2022-04-15 17:04:36
  * @FilePath: \wx_RoomOrder\README.md
  * @Description: 
  * 
  * Copyright (c) 2022 by yjr-1100/CSU, All Rights Reserved. 
 -->
 
-# 校园教室预约小程序  ![](https://img.shields.io/badge/flask-v1.1.2-blue) ![](https://img.shields.io/badge/Python-v3.9.6-blue) ![](https://img.shields.io/badge/%40vue%2Fcil-v5.0.4-orange)
+# 校园教室预约小程序  ![](https://img.shields.io/badge/flask-v1.1.2-blue) ![](https://img.shields.io/badge/Python-v3.9.6-blue) ![](https://img.shields.io/badge/Vue-2.0-brightgreen) ![](https://img.shields.io/badge/%40vue%2Fcil-v5.0.4-orange) ![](https://img.shields.io/badge/-Element-blue) ![](https://img.shields.io/github/last-commit/yjr-1100/wx_RoomOrder)
 
-## 后端设计
+## 需求与设计
+
+### 后端设计
 
 由于微信审核过程较慢，所以将一些可能经常更改的资源文件放在服务器上，通过请求来获取
 1. :heavy_check_mark: 返回openid的接口
@@ -46,9 +48,9 @@
 
 加油 :poultry_leg: :poultry_leg: :poultry_leg:
 
-## 小程序设计
+### 小程序设计
 
-### 需求
+#### 需求
 
 1. :heavy_check_mark: 微信授权登录
 
@@ -71,11 +73,13 @@
 5. :dizzy_face: 轮播图动态更新后可以进行对应信息的展示,此项需求需要根据轮播图情况来定
 
 
-## web端设计
+### web端设计
 
-通过vue搭建web端
+通过vue2搭建web端，部分UI使用 `Element` 组件库
 
-### 需求
+[Element传送门](https://element.eleme.cn/#/zh-CN)
+
+#### 需求
 
 1. :heavy_check_mark: 审核人员和超级管理员登录
 
@@ -90,3 +94,11 @@
 5. :clock10: 更新小程序首页轮播图
 
 6. :clock10: 用户权限控制 高级管理员(2)，教室管理员(1)，普通用户(0)无法登录，高级管理员可有创建教室管理员
+
+
+
+## 效果展示
+
+### 小程序效果
+
+### 管理后台效果
