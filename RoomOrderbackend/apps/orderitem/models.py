@@ -4,7 +4,7 @@
 # @Author: YJR-1100
 # @Date: 2022-03-22 16:06:39
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-04-14 19:56:24
+# @LastEditTime: 2022-04-15 17:17:29
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\apps\orderitem\models.py
 # @Description:
 # @
@@ -37,7 +37,7 @@ class Orderitems(db.Model):
     autograph = db.Column(db.String(1024), nullable=True)
     # -------------------------------------------------------------------------
     # 拒绝理由
-    rejectreasion = db.Column(db.String(512), nullable=False)
+    rejectreasion = db.Column(db.String(512), nullable=True)
     # 审核人id
     checker_id = db.Column(
         db.Integer, db.ForeignKey('managers.mid'), nullable=True)

@@ -4,7 +4,7 @@
 # @Author: YJR-1100
 # @Date: 2022-03-22 16:23:55
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-04-14 20:27:08
+# @LastEditTime: 2022-04-15 17:27:31
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\apps\orderitem\api.py
 # @Description:
 # @
@@ -56,7 +56,7 @@ def makeorder():
         db.session.commit()
         return trueReturn(msg="预约提交成功")
     except:
-        return falseReturn(msg="数据库错误", coed=-2)
+        return falseReturn(msg="数据库错误", code=-2)
 
 # 审核接口
 
@@ -144,9 +144,9 @@ def getmyorders():
         order['usingtime'] = item.usingtime
         order['status'] = item.ostatus
         if(item.ochecktime):
-            order['ochecktime'] = item.ochecktime
+            order['ochecktime'] = str(item.ochecktime)
         if(item.checker_id):
-            order['checkername'] = Users.query.get(item.checker_id).uname
+            order['checkername'] = Managers.query.get(item.checker_id).mname
         orderlist.append(order)
     # print(orderlist)
     return trueReturn(data=orderlist)

@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-03-21 20:06:11
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-15 17:06:36
+ * @LastEditTime: 2022-04-15 17:44:24
  * @FilePath: \wx_RoomOrder\README.md
  * @Description: 
  * 
@@ -104,5 +104,6 @@
 ## 效果展示
 
 ### 小程序效果
+![](https://cdn.jsdelivr.net/gh/yjr-1100/Photobag/img/202204151744957.gif)
 
 ### 管理后台效果

@@ -4,7 +4,7 @@
  * @Author: YJR-1100
  * @Date: 2022-03-25 00:00:14
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-14 14:48:40
+ * @LastEditTime: 2022-04-15 17:34:08
  * @FilePath: \wx_RoomOrder\wxRoomOrderfont\pages\roomdetail\roomdetail.js
  * @Description: 
  * @
@@ -158,7 +158,22 @@ Page({
             }
           }
         })
-    }else if(!this.data.roomusage){//检查教室用途没有有内容
+    }else if(user.isreadedrules == 0){
+      wx.showModal({
+        title: '提示',
+        content: '请阅读借阅须知',
+        mask:true,
+        success (res) {
+          if (res.confirm) {
+            //点击确定后跳到tabbar登录页面
+            wx.switchTab({
+              url: '/pages/user/user'
+            })
+          }
+        }
+      })
+    }
+    else if(!this.data.roomusage){//检查教室用途没有有内容
       wx.showToast({
         title: '请填写教室用途',
         icon: 'error',//
