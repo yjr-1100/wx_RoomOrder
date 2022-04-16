@@ -4,6 +4,7 @@ roomphoto/
 migrations/
 RoomOrderbackend/wxappsetting.json
 RoomOrderbackend/test.py
+uploadstatic
 
 .DS_Store
 node_modules

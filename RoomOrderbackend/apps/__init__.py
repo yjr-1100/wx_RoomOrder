@@ -4,7 +4,7 @@
 # @Author: YJR-1100
 # @Date: 2022-03-22 14:27:40
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-04-13 14:28:21
+# @LastEditTime: 2022-04-16 22:49:37
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\apps\__init__.py
 # @Description:
 # @
@@ -35,6 +35,5 @@ def create_app():
     app.register_blueprint(swiper_bp, url_prefix="/api/v1/swiper")
     app.register_blueprint(manager_bp, url_prefix="/api/v1/manager")
     app.register_blueprint(org_bp, url_prefix="/api/v1/org")
-    print(app.url_map)
-
+    # print(app.url_map)
     return app

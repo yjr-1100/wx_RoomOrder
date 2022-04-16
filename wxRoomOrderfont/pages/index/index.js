@@ -4,7 +4,7 @@
  * @Author: YJR-1100
  * @Date: 2022-03-21 22:06:52
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-14 14:29:45
+ * @LastEditTime: 2022-04-16 22:14:25
  * @FilePath: \wx_RoomOrder\wxRoomOrderfont\pages\index\index.js
  * @Description: 
  * @
@@ -99,7 +99,23 @@ Page({
    */
   onShow: function () {
     console.log("indexonShow")
-    
+    request({url:"/room/getrooms",method: "get"})
+    .then(result=>{
+      if(result.data.code == 1){
+        this.setData({
+          classroomlist:result.data.responsedata
+        })
+      }
+      else{
+        console.log(result)
+        wx.showToast({
+          icon:"error",
+          mask:true,
+          title:result.data.msg,
+          duration:800
+        })
+      }
+    })
   },
 
   /**

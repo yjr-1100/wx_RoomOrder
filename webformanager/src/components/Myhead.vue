@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-04-12 22:59:28
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-13 14:53:03
+ * @LastEditTime: 2022-04-16 22:47:27
  * @FilePath: \webformanager\src\components\Myhead.vue
  * @Description:
  *
@@ -14,13 +14,24 @@
     <img src="@/assets/headlogo.png" alt="" class="leftlogo" />
     <img src="@/assets/title2.png" alt="" class="title" />
     <!-- <span>教室预约管理系统</span> -->
-    <button>退出登录</button>
+    <button @click="logoutbtn">{{ name }} 退出登录</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'yjr-head'
+  name: 'yjr-head',
+  data() {
+    return {
+      name: JSON.parse(localStorage.getItem('manager')).mname
+    }
+  },
+  methods: {
+    logoutbtn() {
+      localStorage.removeItem('manager')
+      this.$router.replace('/login')
+    }
+  }
 }
 </script>
 

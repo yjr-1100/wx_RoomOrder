@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-04-11 19:52:58
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-13 10:47:00
+ * @LastEditTime: 2022-04-16 22:29:39
  * @FilePath: \webformanager\src\router\index.js
  * @Description:
  * @
@@ -21,7 +21,7 @@ import innerperson from '@/views/innerperson.vue'
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/', redirect: '/home' },
+  { path: '/', redirect: '/login' },
   // 登录的路由规则
   { path: '/login', component: Login },
   // 后台主页的路由规则

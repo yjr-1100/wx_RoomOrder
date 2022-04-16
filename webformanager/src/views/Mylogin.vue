@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-04-11 19:55:32
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-12 22:54:48
+ * @LastEditTime: 2022-04-16 22:45:34
  * @FilePath: \webformanager\src\views\Mylogin.vue
  * @Description:
  *
@@ -58,9 +58,10 @@ export default {
         this.message = '手机号格式错误'
       } else {
         const postdata = { username: this.username, password: this.password }
-        const { data } = await this.$http.post('/user/managerlogin', postdata)
+        const { data } = await this.$http.post('/manager/managerlogin', postdata)
         if (data.code === 0) {
           this.message = data.msg
+          localStorage.removeItem('manager')
         } else {
           console.log(data.responsedata)
           localStorage.setItem('manager', JSON.stringify(data.responsedata))

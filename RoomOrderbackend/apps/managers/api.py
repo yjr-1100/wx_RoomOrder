@@ -4,17 +4,19 @@
 # @Author: YJR-1100
 # @Date: 2022-04-13 13:58:40
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-04-15 16:25:52
+# @LastEditTime: 2022-04-16 21:54:12
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\apps\managers\api.py
 # @Description:
 # @
 # @Copyright (c) 2022 by yjr-1100/CSU, All Rights Reserved.
 #--------------#--------------#
+from hashlib import new
 import re
 from flask import Blueprint, request, redirect, render_template, url_for
 from pandas import isnull
 from apps.managers.models import Managers
 from apps.users.models import Users
+from apps.rooms.models import Rooms
 import settings
 from common.result import trueReturn, falseReturn
 from common.sqlalchemy2json import AlchemyEncoder
@@ -101,3 +103,30 @@ def updateinnerpersonstate():
         print(e)
         return falseReturn(msg="数据库错误")
     return trueReturn(msg="修改成功")
+
+
+# 修改教室
+@manager_bp.route('/updaterooms', methods=['POST'])
+def updaterooms():
+    data = request.get_json()
+    try:
+        isnewroom = data['isnewroom']
+    except:
+        return falseReturn(msg="缺少必要参数")
+    if isnewroom == 1:
+        room = Rooms()
+        room.orgid = data['orgid']
+    else:
+        room = Rooms.query.filter(Rooms.rid == data['rid']).first()
+
+    room.rname = data['name']
+    room.raddress = data['adress']
+    room.rdescribe = data['describe']
+    room.rphotoURL = ';'.join(data['imageurl'])
+    room.rcanbeusetimes = ';'.join(data['rcanbeusetimes'])
+    try:
+        db.session.commit()
+    except Exception as e:
+        print(e)
+        return falseReturn(msg="数据库错误")
+    return trueReturn(msg="操作成功")

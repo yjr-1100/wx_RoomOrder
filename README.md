@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-03-21 20:06:11
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-15 17:44:24
+ * @LastEditTime: 2022-04-16 22:53:02
  * @FilePath: \wx_RoomOrder\README.md
  * @Description: 
  * 
@@ -87,7 +87,7 @@
 
 1. :heavy_check_mark: 审核人员和超级管理员登录
 
-1. :clock10: 可以更新教室信息
+1. :heavy_check_mark: 可以更新教室信息和添加教室
 
 2. :heavy_check_mark: 进行教室使用的审核
 

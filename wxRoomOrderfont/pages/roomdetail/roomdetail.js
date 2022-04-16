@@ -4,7 +4,7 @@
  * @Author: YJR-1100
  * @Date: 2022-03-25 00:00:14
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-15 17:34:08
+ * @LastEditTime: 2022-04-16 22:22:26
  * @FilePath: \wx_RoomOrder\wxRoomOrderfont\pages\roomdetail\roomdetail.js
  * @Description: 
  * @
@@ -59,7 +59,7 @@ Page({
         [`room.describe`]:data.data.describe,
         [`room.rid`]:data.data.rid,
         [`room.orgid`]:data.data.orgid,
-        rcanbeusetimes:data.data.rcanbeusetimes
+        rcanbeusetimes:data.data.rcanbeusetimes.sort()
       })
       // console.log(...data.data.imageurl)
 
@@ -270,7 +270,6 @@ Page({
     getroomusedtime(this,this.data.room.rid,formatDate(new Date()))
 
   },
-
   /**
    * 页面上拉触底事件的处理函数
    */

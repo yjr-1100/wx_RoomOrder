@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-04-13 10:31:23
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-14 20:28:08
+ * @LastEditTime: 2022-04-16 22:52:49
  * @FilePath: \webformanager\src\views\roomcheck.vue
  * @Description:
  *
@@ -118,7 +118,7 @@ export default {
       const postdata = {
         oid: row.oid,
         status: status,
-        checker_id: 2
+        checker_id: JSON.parse(localStorage.getItem('manager')).mid
       }
       if (status === 1) {
         const { data } = await this.$http.post('/orderitems/checkorder', postdata)
@@ -146,7 +146,7 @@ export default {
           })
         }
       }
-      this.getorderlist(2)
+      this.getorderlist(JSON.parse(localStorage.getItem('manager')).m2org)
     },
     filterTag(value, row) {
       return row.status === value
@@ -156,7 +156,7 @@ export default {
         orgid: orgid
       })
       this.orderlist = data.responsedata
-      console.log(data.responsedata)
+      // console.log(data.responsedata)
       if (data.code === -1) {
         this.$message.error('数据拉取失败')
       }
@@ -171,8 +171,8 @@ export default {
     }
   },
   created() {
-    this.getorderlist(2)
-    this.getallroom(2)
+    this.getorderlist(JSON.parse(localStorage.getItem('manager')).m2org)
+    this.getallroom(JSON.parse(localStorage.getItem('manager')).m2org)
   }
 }
 </script>

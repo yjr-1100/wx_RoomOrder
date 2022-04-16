@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-04-13 10:34:12
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-15 16:28:07
+ * @LastEditTime: 2022-04-16 22:39:31
  * @FilePath: \webformanager\src\views\innerperson.vue
  * @Description:
  *
@@ -75,7 +75,7 @@ export default {
         })
       }
 
-      this.getpeoplelist(2)
+      this.getpeoplelist(JSON.parse(localStorage.getItem('manager')).m2org)
     },
     filterTag(value, row) {
       console.log(row)
@@ -94,7 +94,7 @@ export default {
     }
   },
   created() {
-    this.getpeoplelist(2)
+    this.getpeoplelist(JSON.parse(localStorage.getItem('manager')).m2org)
     console.log(' --')
   }
 }
