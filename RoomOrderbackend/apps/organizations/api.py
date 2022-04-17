@@ -4,7 +4,7 @@
 # @Author: YJR-1100
 # @Date: 2022-04-13 13:52:57
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-04-15 14:20:53
+# @LastEditTime: 2022-04-17 21:10:53
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\apps\organizations\api.py
 # @Description:
 # @
@@ -18,6 +18,9 @@ import settings
 from common.result import trueReturn, falseReturn
 from common.sqlalchemy2json import AlchemyEncoder
 from exts import db
+from common.tooken import generate_token, certify_token
+from apps.managers.models import Managers
+from apps.users.models import Users
 from sqlalchemy import or_, and_
 import requests
 import json
@@ -28,12 +31,12 @@ org_bp = Blueprint('orgs', __name__)
 
 
 @org_bp.route('/getallorg', methods=['GET'])
-def getOpenId():
+def getallorg():
     try:
         orglists = Organizations.query.filter(Organizations.isdelet == 1).all()
         # print(swiperlists)
     except:
-        return falseReturn(data=[settings.defaultimage.swiperdefaultimage], msg="database failed")
+        return falseReturn(msg="database failed")
     allorgs = []
     for org in orglists:
         orgitem = {}
@@ -45,6 +48,61 @@ def getOpenId():
     else:
         return trueReturn(data=allorgs, msg="success")
 
-# 上传轮播图
+# 添加组织
 
-# 删除轮播图
+
+@org_bp.route('/addorg', methods=['POST'])
+def addorg():
+    data = request.get_json()
+    try:
+        tooken = data['tooken']
+        mid = data['mid']
+        orgname = data['orgname']
+    except:
+        return falseReturn(msg="缺少必要参数")
+    mpwd = Managers.query.get(mid).mpassword
+    mphonenum = Managers.query.get(mid).mphonenum
+    if not certify_token(str(mphonenum)+str(mpwd), tooken):
+        return falseReturn(msg="登录过期，请重新登录2")
+
+    org = Organizations(orgname=orgname)
+    try:
+        db.session.add(org)
+        db.session.commit()
+    except Exception as e:
+        print(e)
+        return falseReturn(msg="添加失败")
+    return trueReturn(msg="添加成功")
+
+
+# 删除组织
+@org_bp.route('/rmorg', methods=['POST'])
+def rmorg():
+    data = request.get_json()
+    print(data)
+    try:
+        tooken = data['tooken']
+        mid = data['mid']
+        orgid = data['orgid']
+    except:
+        return falseReturn(msg="缺少必要参数")
+    mpwd = Managers.query.get(mid).mpassword
+    mphonenum = Managers.query.get(mid).mphonenum
+    if not certify_token(str(mphonenum)+str(mpwd), tooken):
+        return falseReturn(msg="登录过期，请重新登录2")
+
+    org = Organizations.query.filter(Organizations.orgid == orgid).first()
+    managerlists = Managers.query.filter(
+        and_(Managers.isdelet == 1, Managers.m2org == orgid)).all()
+    perplelist = Users.query.filter(Users.orgid == orgid).all()
+    for m in managerlists:
+        m.isdelet = 0
+    for p in perplelist:
+        p.isdelet = 0
+    org.isdelet = 0
+    try:
+        db.session.commit()
+    except Exception as e:
+        print(e)
+        return falseReturn(msg="删除失败")
+    return trueReturn(msg="删除成功")

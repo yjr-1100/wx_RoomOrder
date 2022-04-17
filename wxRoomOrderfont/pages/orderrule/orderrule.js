@@ -2,13 +2,14 @@
  * @Author: YJR-1100
  * @Date: 2022-03-24 13:39:31
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-03-27 20:30:44
+ * @LastEditTime: 2022-04-17 23:35:47
  * @FilePath: \wx_RoomOrder\wxRoomOrderfont\pages\orderrule\orderrule.js
  * @Description: 
  * @
  * @Copyright (c) 2022 by yjr-1100/CSU, All Rights Reserved. 
  */
 // pages/orderrule/orderrule.js
+import {request} from "../../request/index.js"  
 const app = getApp()
 Page({
 
@@ -20,13 +21,20 @@ Page({
     btndisabled:true,
     chboxchecked:false,
     rediodisabled:false,
-    isreaded:false
+    isreaded:false,
+    rulesitemlist:['预约须知获取失败']
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(option){
+    request({url:"/rule/getrule",method: "get"})
+    .then(result=>{
+      this.setData({
+        rulesitemlist : result.data.responsedata.split(';')
+      })
+    })
     this.setData({
       "counttime":app.globalData.rulereadtime
     })

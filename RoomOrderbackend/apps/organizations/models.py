@@ -4,7 +4,7 @@
 # @Author: YJR-1100
 # @Date: 2022-04-13 13:53:05
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-04-13 14:20:02
+# @LastEditTime: 2022-04-17 18:45:23
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\apps\organizations\models.py
 # @Description:
 # @
@@ -27,7 +27,7 @@ class Organizations(db.Model):
         return self.rid
 
     def __init__(self, orgname=""):
-        self.uopenid = orgname
+        self.orgname = orgname
 
     def todict(self):
         orgdict = {}

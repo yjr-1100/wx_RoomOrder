@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-04-13 10:35:23
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-16 22:38:56
+ * @LastEditTime: 2022-04-17 23:25:23
  * @FilePath: \webformanager\src\views\roommanage.vue
  * @Description:
  *
@@ -33,7 +33,7 @@
           <div class="roomimages">
             <div class="imgdiv" v-for="item in roomdetail.imageurl" :key="item">
               <img :src="item" alt="教室详情图片" />
-              <div class="hovermask">
+              <div class="hovermask" @click="deletimg(item)">
                 <i class="el-icon-delete"></i>
               </div>
             </div>
@@ -107,6 +107,7 @@
 <script>
 export default {
   name: 'yjr-roommanage',
+  props: ['tooken', 'datatooken'],
   data() {
     return {
       visible: false,
@@ -128,9 +129,13 @@ export default {
 
   created() {
     // 发送请求得到该管理者管理的所有教室
+
     this.getallroom(JSON.parse(localStorage.getItem('manager')).m2org)
   },
   methods: {
+    deletimg(url) {
+      this.roomdetail.imageurl.splice(this.roomdetail.imageurl.indexOf(url), 1)
+    },
     addnewroombtn() {
       this.isshowdetail = true
       this.roomdetail = {}

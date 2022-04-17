@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-03-21 20:06:11
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-16 22:53:02
+ * @LastEditTime: 2022-04-17 23:27:28
  * @FilePath: \wx_RoomOrder\README.md
  * @Description: 
  * 
@@ -93,11 +93,13 @@
 
 3. :clock10: 进行教室状态的查询
 
-4. :clock10: 更新小程序中的预约须知
+4. :heavy_check_mark: 更新小程序中的预约须知
 
-5. :clock10: 更新小程序首页轮播图
+5. :heavy_check_mark: 更新小程序首页轮播图
 
-6. :clock10: 用户权限控制 高级管理员(2)，教室管理员(1)，普通用户(0)无法登录，高级管理员可有创建教室管理员
+6. :heavy_check_mark: 用户权限控制 高级管理员(2)，教室管理员(1)，普通用户(0)无法登录，高级管理员可有创建教室管理员
+
+7. :heavy_check_mark: 高级管理员进行组织的删除添加等操作
 
 
 

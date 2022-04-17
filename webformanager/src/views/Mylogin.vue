@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-04-11 19:55:32
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-16 22:45:34
+ * @LastEditTime: 2022-04-17 22:27:17
  * @FilePath: \webformanager\src\views\Mylogin.vue
  * @Description:
  *
@@ -26,7 +26,7 @@
           </div>
           <div>
             <label for="pwd">密码</label>
-            <input type="password" name="password" id="pwd" v-model.trim="password" placeholder="请输入登录密码" />
+            <input type="password" name="password" id="pwd" v-model.trim="password" placeholder="请输入登录密码" @keyup.enter="managelogin" />
           </div>
         </div>
         <h4>{{ message }}</h4>
@@ -38,6 +38,7 @@
 </template>
 
 <script>
+// import bus from '@/router/EventBus.js'
 export default {
   name: 'MyLogin',
   data() {
@@ -46,6 +47,10 @@ export default {
       password: '',
       message: ''
     }
+  },
+  beforeDestroy() {
+    // 组件销毁前需要解绑事件。否则会出现重复触发事件的问题
+    // bus.$off('tooken')
   },
   methods: {
     async managelogin() {
@@ -58,14 +63,34 @@ export default {
         this.message = '手机号格式错误'
       } else {
         const postdata = { username: this.username, password: this.password }
-        const { data } = await this.$http.post('/manager/managerlogin', postdata)
+        const { data } = await this.$http.post('/manager/managerlogin', postdata).catch((result) => {
+          this.$message.error('网络错误')
+        })
+        // console.log(data)
         if (data.code === 0) {
           this.message = data.msg
           localStorage.removeItem('manager')
         } else {
-          console.log(data.responsedata)
-          localStorage.setItem('manager', JSON.stringify(data.responsedata))
-          this.$router.push('/home')
+          // console.log(data.responsedata)
+          localStorage.setItem('manager', JSON.stringify(data.responsedata.dictuser))
+          // bus.$emit('tooken', data.responsedata.tooken)
+          if (data.responsedata.dictuser.m2org === 1) {
+            this.$router.push({
+              name: 'orgmanageset',
+              params: {
+                m2org: 1,
+                tooken: data.responsedata.tooken
+              }
+            })
+            // this.$router.push('/home/orgmanageset?m2org=1')
+          } else {
+            this.$router.push({
+              name: 'home',
+              params: {
+                tooken: data.responsedata.tooken
+              }
+            })
+          }
         }
       }
     }

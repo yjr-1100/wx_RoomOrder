@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-04-13 10:34:12
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-16 22:39:31
+ * @LastEditTime: 2022-04-17 16:50:46
  * @FilePath: \webformanager\src\views\innerperson.vue
  * @Description:
  *
@@ -52,6 +52,7 @@
 <script>
 export default {
   name: 'yjr-innerperson',
+  props: ['tooken', 'datatooken'],
   data() {
     return {
       peoplelist: []

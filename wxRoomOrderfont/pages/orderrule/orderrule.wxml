@@ -1,28 +1,21 @@
-<scroll-view scroll-y="true" class="rulecontent" hover-class="none" hover-stop-propagation="false" bindscrolltolower="viewscroll" >
+<scroll-view scroll-y="true" class="rulecontent" hover-class="none" hover-stop-propagation="false" bindscrolltolower="viewscroll">
     <view class="title">教室预约须知</view>
     <view class="title2">一、预约时间</view>
     <view class="content" hover-class="none" hover-stop-propagation="false">
-        <view >除本馆固定开展活动和培训时间以外，原则上功能室预约使用时间：9:00-11:30，15:00-17:00。</view>
+        <view>除本馆固定开展活动和培训时间以外，原则上功能室预约使用时间：9:00-11:30，15:00-17:00。</view>
     </view>
-
     <view class="title2">二、注意事项</view>
     <view class="content" hover-class="none" hover-stop-propagation="false">
-        <view >1.预约使用各功能教室团体需保持教室清洁卫生，不乱丢纸屑杂物，不携带食品进教室。</view>
-        <view >2.使用教室前，应自行检查设施是否正常，卫生是否整洁，发现问题应及时报告，否则出现问题由当前使用团队负责</view>
-        <view >3.原则上功能室内设备（如投影仪、音响等）需有本馆专业人员在场允许后由本馆人员操作开放使用。为保证活动方便，预约使用教室团体可携带小型音响等便于携带和播放的设备。擅自使用固定设备造成损坏者，照价赔偿</view>
-        <view >4.爱护公物，不得乱涂乱画，损坏设施，不得随便坐在把杆上。严禁穿高跟鞋、钉鞋等进入舞蹈、声乐教室。活动结束后打扫好卫生，及时关灯切断电源、关闭门窗</view>
-        <view >5.遵守教室使用各项规章制度，严禁大声喧哗，在教室做与活动、培训、授课无关的事项，严禁其他不文明和违规行为</view>
-        <view >6.各功能室不得存放个人物品。离开教室时，需带走个人物品，因改原因导致个人物品损坏或丢失，本馆概不负责。</view>
-        <view >7.凡不遵守以上规定者，一经查实将按照相关规定严肃处理，拒不接受管理者，本馆有权拒绝其今后的预约教室使用。</view>
-        <view >8.本公告之规定自发布之日起执行，xxx馆将根据上级部门指示，视疫情发展情况动态调整开放措施。请广师生积极配合，让我们共同努力，营造文明、安全、卫生、有序的活动活动环境。感谢您的理解与支持!</view>
+        <view wx:for="{{rulesitemlist}}" wx:for-index="index" wx:for-item="item" wx:key="item">
+            {{item}}
+        </view>
     </view>
-
 </scroll-view>
 <view class="checkview" hover-class="none" hover-stop-propagation="false">
-    <radio id="chbox" bindtap="radioChange" checked="{{chboxchecked}}" disabled="{{rediodisabled}}"/> 
+    <radio id="chbox" bindtap="radioChange" checked="{{chboxchecked}}" disabled="{{rediodisabled}}" />
     我已阅读并承诺遵守教室预约须知
 </view>
 <button id="rbtn" class="readbtn {{btndisabled?'btndisactive':''}}" disabled="{{btndisabled}}" bindtap="btnverify">
-<text wx:if="{{counttime}}">正在阅读 ({{counttime}})</text>
-<text wx:else>我已阅读</text>
+    <text wx:if="{{counttime}}">正在阅读 ({{counttime}})</text>
+    <text wx:else>我已阅读</text>
 </button>

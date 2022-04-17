@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-04-13 10:31:23
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-16 22:52:49
+ * @LastEditTime: 2022-04-17 16:50:44
  * @FilePath: \webformanager\src\views\roomcheck.vue
  * @Description:
  *
@@ -96,6 +96,7 @@
 <script>
 export default {
   name: 'yjr-roomcheck',
+  props: ['tooken', 'datatooken'],
   data() {
     return {
       orderlist: [],

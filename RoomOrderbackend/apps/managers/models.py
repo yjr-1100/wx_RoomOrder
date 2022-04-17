@@ -4,7 +4,7 @@
 # @Author: YJR-1100
 # @Date: 2022-04-13 13:58:57
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-04-13 17:28:33
+# @LastEditTime: 2022-04-17 20:38:19
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\apps\managers\models.py
 # @Description:
 # @
@@ -39,16 +39,12 @@ class Managers(db.Model):
     mphonenum = db.Column(db.String(15), nullable=False)
     # 管理员所属组织
     m2org = db.Column(db.Integer, nullable=False)
+    # 组织是否被删除
+    # 1 没有被删除 0，被删了
+    isdelet = db.Column(db.Integer, default=1)
 
     def __str__(self):
         return self.rid
-
-    def __init__(self, mname, mpassword, mphonenum, m2org, mlevel=1):
-        self.mlevel = mlevel
-        self.mname = mname
-        self.mpassword = mpassword
-        self.mphonenum = mphonenum
-        self.m2org = m2org
 
     def todict(self):
         managerdict = {}

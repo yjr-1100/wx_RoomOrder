@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-04-13 10:22:45
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-13 22:09:28
+ * @LastEditTime: 2022-04-17 13:51:59
  * @FilePath: \webformanager\src\components\Myleftnavigator.vue
  * @Description:
  *
@@ -11,30 +11,33 @@
 <template>
   <div class="yjr-leftnavigatorcontant">
     <ul class="menu">
-      <li class="menu-item"><router-link to="/home/check">预约审核</router-link></li>
-      <li class="menu-item"><router-link to="/home/manage">教室管理</router-link></li>
-      <li class="menu-item"><router-link to="/home/person">成员管理</router-link></li>
+      <li class="menu-item" v-if="m2org == 1"><router-link to="/home/orgmanageset">组织和管理</router-link></li>
+      <li class="menu-item" v-else><router-link to="/home/check">预约审核</router-link></li>
+      <li class="menu-item" v-if="m2org == 1"><router-link to="/home/wxset">小程序设置</router-link></li>
+      <li class="menu-item" v-else><router-link to="/home/manage">教室管理</router-link></li>
+      <li class="menu-item" v-if="m2org != 1"><router-link to="/home/person">成员管理</router-link></li>
     </ul>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'yjr-leftnavigator'
+  name: 'yjr-leftnavigator',
+  props: ['m2org']
 }
 </script>
 
 <style lang="less" scoped>
 .yjr-leftnavigatorcontant {
   height: 100%;
-  width: 120px !important;
+  width: 130px !important;
   position: relative;
   background-color: #334154;
   box-shadow: 3px 0 10px#272e55;
   padding: 0;
   ul {
     height: 100%;
-    width: 120px !important;
+    width: 130px !important;
     li {
       width: 100%;
       text-align: center;
