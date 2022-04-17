@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-03-21 20:06:11
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-17 23:27:28
+ * @LastEditTime: 2022-04-17 23:45:26
  * @FilePath: \wx_RoomOrder\README.md
  * @Description: 
  * 
@@ -24,11 +24,11 @@
 
 2. :heavy_check_mark: 创建用户的接口
 
-3. :clock130: 更新用户信息的接口
+3. :heavy_check_mark: 更新用户信息的接口
 
-    1. :clock130: 更新阅读状态
+    1. :heavy_check_mark: 更新阅读状态
 
-        1. :clock10: 重置所有人的阅读状态为没有阅读
+        1. :heavy_check_mark: 重置所有人的阅读状态为没有阅读
 
         2. :heavy_check_mark: 用户阅读后修改状态为已阅读
 
@@ -36,9 +36,9 @@
 
     3. :heavy_check_mark: 更新身份认证
 
-4. :clock10: 创建教室的接口
+4. :heavy_check_mark: 创建教室的接口
 
-5. :clock10: 更新教室的接口
+5. :heavy_check_mark: 更新教室的接口
 
 5. :heavy_check_mark: 获取所有教室信息
 

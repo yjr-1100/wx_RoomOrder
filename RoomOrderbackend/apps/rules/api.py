@@ -4,7 +4,7 @@
 # @Author: YJR-1100
 # @Date: 2022-03-22 16:15:12
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-04-17 23:21:43
+# @LastEditTime: 2022-04-17 23:43:37
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\apps\rules\api.py
 # @Description:
 # @
@@ -19,6 +19,7 @@ from common.result import falseReturn, trueReturn
 from common.tooken import certify_token
 from apps.rules.models import Rule
 from apps.managers.models import Managers
+from apps.users.models import Users
 import settings
 from exts import db
 from sqlalchemy import or_
@@ -72,6 +73,10 @@ def uploadrule():
         rule.isdelet = 0
     rule = Rule()
     rule.rutext = text
+    userlist = Users.query.filter(Users.isreadedrules == 1).all()
+    for user in userlist:
+        user.isreadedrules = 0
+
     try:
         db.session.add(rule)
         db.session.commit()
