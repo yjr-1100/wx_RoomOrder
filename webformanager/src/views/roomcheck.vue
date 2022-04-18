@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-04-13 10:31:23
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-17 16:50:44
+ * @LastEditTime: 2022-04-18 21:12:30
  * @FilePath: \webformanager\src\views\roomcheck.vue
  * @Description:
  *
@@ -53,7 +53,9 @@
                 </el-form-item>
                 <el-form-item label="签字图片">
                   <span v-if="props.row.userinner === 1">内部人员无需签字</span>
-                  <span v-else>{{ props.row.autograph }}</span>
+                  <span v-else>
+                    <el-image v-for="imgurl in props.row.autograph" :key="imgurl" :src="imgurl" alt="" class="autographimg" :preview-src-list="props.row.autograph"></el-image>
+                  </span>
                 </el-form-item>
               </el-form>
             </template>
@@ -112,7 +114,7 @@ export default {
       b = b.ordertime
       const dataa = new Date(a.replace(/-/g, '/'))
       const datab = new Date(b.replace(/-/g, '/'))
-      return datab - dataa
+      return dataa - datab
     },
     async handlechange(index, row, status) {
       console.log(index, row)
@@ -157,6 +159,14 @@ export default {
         orgid: orgid
       })
       this.orderlist = data.responsedata
+      this.orderlist.forEach((order) => {
+        const graphlist = order.autograph.split(';')
+        if (graphlist[0] === 1) order.autograph = graphlist[1]
+        else if (graphlist[0] === 0) order.autograph = graphlist[1]
+        else {
+          order.autograph = graphlist
+        }
+      })
       // console.log(data.responsedata)
       if (data.code === -1) {
         this.$message.error('数据拉取失败')
@@ -230,6 +240,12 @@ export default {
         }
         span {
           display: block;
+        }
+        .autographimg {
+          width: 100px;
+          height: 100px;
+          border: #95b2db 1 solid;
+          margin: 5px 5px 0 0;
         }
       }
     }

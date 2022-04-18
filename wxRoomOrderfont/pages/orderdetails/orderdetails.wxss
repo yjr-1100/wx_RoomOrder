@@ -39,6 +39,18 @@
   align-items: flex-start;
   padding-top: 1vw;
 }
+.orderdetails .orderdetailscontant .image .imgcontant {
+  min-height: 7.5vw;
+  height: auto;
+  width: 100%;
+}
+.orderdetails .orderdetailscontant .image .imgcontant img {
+  height: 100%;
+  width: 100%;
+}
+.orderdetails .orderdetailscontant .image .tt {
+  width: 100%;
+}
 .orderdetails .orderdetailscontant #divLine {
   display: block;
   background-color: #3f2a339d;

@@ -57,6 +57,12 @@
       <view class="tt">教室用途</view>
       <view class="t">{{order.roomusage}}</view>
     </view>
+    <view class="image" wx:if="{{!zhankai}}">
+      <view class="imgcontant" wx:if="{{order.userinner !=1}}">
+        <image bindtap="imgYu" data-list="{{order.autograph}}" data-src="{{item}}" class="" wx:for="{{order.autograph}}" wx:for-index="index" wx:for-item="item" wx:key="item" src="{{item}}" alt="" mode="scaleToFill"></image>
+      </view>
+      <view class="tt" wx:else>内部人员无需照片</view>
+    </view>
     <span id="btn" bindtap="clickzhankai">
       <text wx:if="{{zhankai}}" class="iconfont icon-double-arrow-down-full"></text>
       <text wx:else class="iconfont icon-double-arrow-up-full"></text>

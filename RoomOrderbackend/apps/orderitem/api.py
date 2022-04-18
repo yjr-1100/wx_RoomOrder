@@ -4,7 +4,7 @@
 # @Author: YJR-1100
 # @Date: 2022-03-22 16:23:55
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-04-15 21:45:33
+# @LastEditTime: 2022-04-18 20:56:15
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\apps\orderitem\api.py
 # @Description:
 # @
@@ -19,6 +19,7 @@ from apps.orderitem.models import Orderitems
 from apps.rooms.models import Rooms
 from apps.users.models import Users
 from apps.managers.models import Managers
+from apps.organizations.models import Organizations
 from common.sqlalchemy2json import AlchemyEncoder
 import hashlib
 from exts import db
@@ -48,9 +49,14 @@ def makeorder():
     except Exception as e:
         return falseReturn(msg=e, code=-1)
     try:
-        myorder.autograph = data['autograph']
+        if Users.query.get(data['user_id']).isinsider != 1:
+            myorder.autograph = data['verifyimg']
+        else:
+            uorgid = Users.query.get(data['user_id']).orgid
+            myorder.autograph = '1;他是' + \
+                Organizations.query.get(uorgid).orgname + '的人'
     except:
-        myorder.autograph = ""
+        myorder.autograph = "0;用户没有上传辅导员签字照片"
     try:
         db.session.add(myorder)
         db.session.commit()
@@ -116,6 +122,7 @@ def managergetorder():
             order['rejectreasion'] = item.rejectreasion
         if(Users.query.get(item.user_id).isinsider == 1):
             order['userinner'] = 1
+            order['autograph'] = item.autograph
         else:
             order['userinner'] = 0
             order['autograph'] = item.autograph

@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-04-15 17:49:07
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-15 23:26:56
+ * @LastEditTime: 2022-04-18 21:41:26
  * @FilePath: \wx_RoomOrder\wxRoomOrderfont\pages\orderdetails\orderdetails.js
  * @Description: 
  * @
@@ -47,6 +47,12 @@ Page({
       that.setData({
         order:data.data
       })
+      if(data.data.autograph){
+        that.setData({
+          [`order.autograph`]:data.data.autograph.split(';')
+        })
+      }
+      
     })
   },
   clickzhankai(){
@@ -54,6 +60,15 @@ Page({
       zhankai:!this.data.zhankai
     })
   },
+  imgYu(event){
+    console.log(event)
+  var src = event.currentTarget.dataset.src;//获取data-src
+  var imgList = event.currentTarget.dataset.list;//获取data-list
+  //图片预览
+  wx.previewImage({
+  current: src, // 当前显示图片的http链接
+  urls: imgList // 需要预览的图片http链接列表
+  })},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

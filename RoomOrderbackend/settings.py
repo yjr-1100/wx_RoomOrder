@@ -4,7 +4,7 @@
 # @Author: YJR-1100
 # @Date: 2022-03-22 14:26:49
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-04-17 22:04:29
+# @LastEditTime: 2022-04-18 19:54:18
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\settings.py
 # @Description:
 # @
@@ -50,3 +50,6 @@ class defaultimage():
         os.path.dirname(__file__))+'\\uploadstatic\\swiper\\'
     showswiperimgurl = 'http://127.0.0.1:5000/api/v1/swiper/show/'
     swiperdefaultimage = "https://cdn.jsdelivr.net/gh/yjr-1100/Photobag/roomorderimage/202203261650698.jpg"
+    access_UPLOAD_img = os.path.abspath(
+        os.path.dirname(__file__))+'\\uploadstatic\\accessimg\\'
+    showsaccessimgurl = 'http://127.0.0.1:5000/api/v1/user/show/'

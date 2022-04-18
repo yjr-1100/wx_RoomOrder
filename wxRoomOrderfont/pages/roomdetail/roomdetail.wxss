@@ -127,6 +127,63 @@
   right: 3vw;
   color: #c5c5c5;
 }
+.uplodimagewrap {
+  width: 100%;
+  box-sizing: border-box;
+}
+.uplodimagewrap .img-wrap {
+  font-size: 30rpx;
+  color: #33373E;
+  margin-bottom: 10rpx;
+}
+.uplodimagewrap p {
+  color: #8B97A9;
+  font-size: 12px;
+  margin: 2vw 0;
+  display: block;
+}
+.uplodimagewrap .txt {
+  color: #472634;
+  font-size: 5.3vw;
+  font-weight: 600;
+  margin: 2vw 5vw;
+}
+.uplodimagewrap .imglist {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 10px;
+  margin: 2vw 5vw 5vw 5vw;
+  border-radius: 5vw;
+  background-color: #fff;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+  border: #f5f5f5 2rpx solid;
+}
+.uplodimagewrap .imglist .item {
+  width: 150rpx;
+  height: 150rpx;
+  margin-right: 22rpx;
+  margin-bottom: 10rpx;
+  position: relative;
+}
+.uplodimagewrap .imglist .item image {
+  width: 100%;
+  height: 100%;
+}
+.uplodimagewrap .imglist .item .delete {
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  top: -14rpx;
+  right: -12rpx;
+}
+.uplodimagewrap .imglist .last-item {
+  width: 150rpx;
+  height: 150rpx;
+  text-align: center;
+  line-height: 146rpx;
+  border: 2rpx dashed #8B97A9;
+  box-sizing: border-box;
+}
 .orderbtn {
   color: #fff;
   width: auto;

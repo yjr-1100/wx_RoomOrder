@@ -4,7 +4,7 @@
  * @Author: YJR-1100
  * @Date: 2022-03-25 00:00:14
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-16 22:22:26
+ * @LastEditTime: 2022-04-18 20:41:22
  * @FilePath: \wx_RoomOrder\wxRoomOrderfont\pages\roomdetail\roomdetail.js
  * @Description: 
  * @
@@ -25,7 +25,10 @@ Page({
     currentlength:0,
     bodyheight:0,
     roomusage:"",
-    autograph:"",//负责人签字的图片 如果不是内部人员需要这个
+    isinner:0,
+    //负责人签字的图片 如果不是内部人员需要这个
+    imgs: [],
+    count: 1,
     chosedtime:"",
     room:{
       "detailimage":["../../Images/咨询室.jpg","../../Images/会议室.jpg"],
@@ -41,7 +44,84 @@ Page({
     }
     ]
   },
-
+  //上传图片
+  bindUpload: function (e) {
+      switch (this.data.imgs.length) {
+        case 0:
+          this.data.count = 3
+          break
+        case 1:
+          this.data.count = 2
+          break
+        case 2:
+          this.data.count = 1
+          break
+      }
+      var that = this
+      wx.chooseImage({
+        count: that.data.count, // 默认3
+        sizeType: ["original", "compressed"], // 可以指定是原图还是压缩图，默认二者都有
+        sourceType: ["album", "camera"], // 可以指定来源是相册还是相机，默认二者都有
+        success: function (res) {
+          // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+          var tempFilePaths = res.tempFilePaths
+          for (var i = 0; i < tempFilePaths.length; i++) {
+            wx.uploadFile({
+              url: 'http://127.0.0.1:5000/api/v1/user/uploadaccessimage',
+              filePath: tempFilePaths[i],
+              name: "file",
+              header: {
+                "content-type": "multipart/form-data"
+              },
+              success: function (res) {
+                if (res.statusCode == 200) {
+                  wx.showToast({
+                    title: "上传成功",
+                    icon: "none",
+                    duration: 1500
+                  })
+                  console.log(res.data)
+                  that.data.imgs.push(JSON.parse(res.data).responsedata['imgurl'])
+                  that.setData({
+                    imgs: that.data.imgs
+                  })
+                }
+              },
+              fail: function (err) {
+                wx.showToast({
+                  title: "上传失败",
+                  icon: "none",
+                  duration: 2000
+                })
+              },
+              complete: function (result) {
+                console.log(result.errMsg)
+              }
+            })
+          }
+        }
+      })
+    },
+    // 删除图片
+deleteImg: function (e) {
+  var that = this
+  wx.showModal({
+    title: "提示",
+    content: "是否删除",
+    success: function (res) {
+      if (res.confirm) {
+        for (var i = 0; i < that.data.imgs.length; i++) {
+          if (i == e.currentTarget.dataset.index) that.data.imgs.splice(i, 1)
+        }
+        that.setData({
+          imgs: that.data.imgs
+        })
+      } else if (res.cancel) {
+        console.log("用户点击取消")
+      }
+    }
+  })
+},
   /**
    * 生命周期函数--监听页面加载
    */
@@ -49,6 +129,12 @@ Page({
     console.log(options)
     var that = this
     const eventChannel = this.getOpenerEventChannel()
+    var user = wx.getStorageSync('userinfo')
+      if(user){
+        this.setData({
+          isinner:user.isinsider
+        })
+      }
     // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
     eventChannel.on('classdata', function(data) {
       console.log(data)
@@ -61,6 +147,7 @@ Page({
         [`room.orgid`]:data.data.orgid,
         rcanbeusetimes:data.data.rcanbeusetimes.sort()
       })
+      
       // console.log(...data.data.imageurl)
 
       // 得到该教室今天已经预约的时间段
@@ -187,6 +274,13 @@ Page({
         mask:true,
         duration: 800
       })
+    }else if(this.data.isinner!=1&&this.data.imgs.length === 0){
+      wx.showToast({
+        title: '请上传签字图片',
+        icon: 'error',//
+        mask:true,
+        duration: 800
+      })
     }
     else{
       // 得到数据
@@ -195,7 +289,8 @@ Page({
         room_id:this.data.room.rid,
         room2orgid:this.data.room.orgid,
         usingtime:this.data.chosedtime,
-        user_id:user.uid
+        user_id:user.uid,
+        verifyimg:this.data.imgs.join(';')
       }
       console.log(data)
       // 发送请求
