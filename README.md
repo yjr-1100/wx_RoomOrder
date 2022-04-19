@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-03-21 20:06:11
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-17 23:45:26
+ * @LastEditTime: 2022-04-19 15:48:29
  * @FilePath: \wx_RoomOrder\README.md
  * @Description: 
  * 
@@ -109,3 +109,14 @@
 ![](https://cdn.jsdelivr.net/gh/yjr-1100/Photobag/img/202204151744957.gif)
 
 ### 管理后台效果
+
+
+## 后端配置
+
+1. 创建mysql数据库
+
+    `create database roomorder`
+
+2. 安装python依赖
+   
+   ``

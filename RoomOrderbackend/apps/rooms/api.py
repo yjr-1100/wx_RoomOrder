@@ -4,18 +4,16 @@
 # @Author: YJR-1100
 # @Date: 2022-03-22 16:23:51
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-04-16 15:46:35
+# @LastEditTime: 2022-04-19 15:47:11
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\apps\rooms\api.py
 # @Description:
 # @
 # @Copyright (c) 2022 by yjr-1100/CSU, All Rights Reserved.
 #--------------#--------------#
 
-import re
-from flask import Blueprint, request, redirect, render_template, url_for, make_response
+from flask import Blueprint, request,  make_response
 from common.result import trueReturn, falseReturn
 from apps.rooms.models import Rooms
-import hashlib
 from exts import db
 from settings import defaultimage
 import os

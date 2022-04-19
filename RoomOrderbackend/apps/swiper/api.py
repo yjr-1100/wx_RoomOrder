@@ -4,17 +4,14 @@
 # @Author: YJR-1100
 # @Date: 2022-03-22 16:15:12
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-04-17 22:24:03
+# @LastEditTime: 2022-04-19 15:46:22
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\apps\swiper\api.py
 # @Description:
 # @
 # @Copyright (c) 2022 by yjr-1100/CSU, All Rights Reserved.
 #--------------#--------------#
 
-from distutils.log import error
-from hashlib import new
-from flask import Blueprint, request, redirect, render_template, make_response
-from pandas import isnull
+from flask import Blueprint, request, make_response
 from common.result import falseReturn, trueReturn
 from common.tooken import certify_token
 from apps.swiper.models import Swiper

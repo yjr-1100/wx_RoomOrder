@@ -4,29 +4,20 @@
 # @Author: YJR-1100
 # @Date: 2022-03-22 16:15:12
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-04-17 23:43:37
+# @LastEditTime: 2022-04-19 15:46:52
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\apps\rules\api.py
 # @Description:
 # @
 # @Copyright (c) 2022 by yjr-1100/CSU, All Rights Reserved.
 #--------------#--------------#
 
-from distutils.log import error
-from hashlib import new
-from flask import Blueprint, request, redirect, render_template, make_response
-from pandas import isnull
+from flask import Blueprint, request
 from common.result import falseReturn, trueReturn
 from common.tooken import certify_token
 from apps.rules.models import Rule
 from apps.managers.models import Managers
 from apps.users.models import Users
-import settings
 from exts import db
-from sqlalchemy import or_
-from settings import defaultimage
-import os
-import datetime
-import random
 rule_bp = Blueprint('rule', __name__)
 
 # 得到规则

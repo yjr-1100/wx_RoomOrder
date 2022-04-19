@@ -4,27 +4,22 @@
 # @Author: YJR-1100
 # @Date: 2022-04-13 13:58:40
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-04-17 20:47:59
+# @LastEditTime: 2022-04-19 15:48:18
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\apps\managers\api.py
 # @Description:
 # @
 # @Copyright (c) 2022 by yjr-1100/CSU, All Rights Reserved.
 #--------------#--------------#
-from hashlib import new
-import re
-from flask import Blueprint, request, redirect, render_template, url_for
-from pandas import isnull
+from flask import Blueprint, request
 from apps.managers.models import Managers
 from apps.organizations.models import Organizations
 from apps.users.models import Users
 from apps.rooms.models import Rooms
-import settings
 from common.result import trueReturn, falseReturn
 from common.tooken import generate_token, certify_token
 from common.sqlalchemy2json import AlchemyEncoder
 from exts import db
 from sqlalchemy import null, or_, and_, true
-import requests
 import json
 # from flask_cors import cross_origin
 manager_bp = Blueprint('managers', __name__)
