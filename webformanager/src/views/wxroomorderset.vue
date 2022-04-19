@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-04-17 13:42:16
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-17 23:24:03
+ * @LastEditTime: 2022-04-19 23:13:55
  * @FilePath: \webformanager\src\views\wxroomorderset.vue
  * @Description:
  *
@@ -16,7 +16,7 @@
     <div class="yjr-main">
       <div class="yjr-contant">
         <div class="imagewarp">
-          <span>教室图片</span>
+          <span> 轮播图片 </span>
           <div class="roomimages">
             <div class="imgdiv" v-for="item in swipimglist" :key="item">
               <img :src="item" alt="教室详情图片" />
@@ -138,7 +138,7 @@ export default {
         } else {
           const fd = new FormData()
           fd.append('file', item)
-          const { data } = await this.$http.post('http://127.0.0.1:5000/api/v1/swiper/uploadswiperimage', fd)
+          const { data } = await this.$http.post('/swiper/uploadswiperimage', fd)
           console.log(data)
           if (data.code === 1) {
             this.$message({

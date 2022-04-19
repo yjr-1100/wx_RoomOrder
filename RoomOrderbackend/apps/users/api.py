@@ -4,7 +4,7 @@
 # @Author: YJR-1100
 # @Date: 2022-03-22 16:15:12
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-04-19 15:45:54
+# @LastEditTime: 2022-04-19 23:02:05
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\apps\users\api.py
 # @Description:
 # @
@@ -23,6 +23,7 @@ import json
 import os
 import datetime
 import random
+import requests
 from settings import defaultimage
 # from flask_cors import cross_origin
 user_bp = Blueprint('users', __name__)

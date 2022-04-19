@@ -19,7 +19,7 @@ class Config:
     ENV = 'development'
     DEBUG = True
     # 使用的数据库+驱动://user:password@hostip:port/databasename
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:123zxc@127.0.0.1:3306/roomorder?charset=utf8'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://数据库用户名:数据库密码@127.0.0.1:3306/roomorder?charset=utf8'
     #SQLALCHEMY_TRACK_MODIFICATIONS = False
     #SQLALCHEMY_ECHO = True
     WXAPPSETTINGPATH = "./wxappsetting.json"

@@ -1,0 +1,29 @@
+alembic==1.7.7
+brotlipy==0.7.0
+certifi==2021.10.8
+cffi @ file:///opt/conda/conda-bld/cffi_1642701102775/work
+charset-normalizer @ file:///tmp/build/80754af9/charset-normalizer_1630003229654/work
+click @ file:///tmp/build/80754af9/click_1646056590078/work
+cryptography==36.0.2
+Flask @ file:///opt/conda/conda-bld/flask_1648041541647/work
+Flask-Cors==3.0.10
+Flask-Migrate==2.7.0
+Flask-Script==2.0.6
+Flask-SQLAlchemy==2.5.1
+greenlet==1.1.2
+idna @ file:///tmp/build/80754af9/idna_1637925883363/work
+importlib-metadata==4.11.3
+itsdangerous @ file:///tmp/build/80754af9/itsdangerous_1621432558163/work
+Jinja2 @ file:///opt/conda/conda-bld/jinja2_1647436528585/work
+Mako==1.2.0
+MarkupSafe @ file:///tmp/build/80754af9/markupsafe_1621523467000/work
+pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
+PyMySQL==1.0.2
+pyOpenSSL @ file:///opt/conda/conda-bld/pyopenssl_1643788558760/work
+PySocks @ file:///tmp/build/80754af9/pysocks_1605305812635/work
+requests @ file:///opt/conda/conda-bld/requests_1641824580448/work
+six==1.16.0
+SQLAlchemy==1.4.35
+urllib3 @ file:///opt/conda/conda-bld/urllib3_1643638302206/work
+Werkzeug @ file:///opt/conda/conda-bld/werkzeug_1645628268370/work
+zipp==3.8.0

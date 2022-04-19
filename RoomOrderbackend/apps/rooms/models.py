@@ -4,7 +4,7 @@
 # @Author: YJR-1100
 # @Date: 2022-03-22 14:54:42
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-04-13 14:26:46
+# @LastEditTime: 2022-04-20 00:04:03
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\apps\rooms\models.py
 # @Description:
 # @
@@ -19,7 +19,7 @@ from datetime import datetime
 class Rooms(db.Model):
 
     # 房间id
-    rid = db.Column(db.String(8), primary_key=True)
+    rid = db.Column(db.Integer, primary_key=True, autoincrement=True)
     # 房间名称
     rname = db.Column(db.String(64), nullable=False)
     # 房间地址

@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-04-13 10:35:23
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-17 23:25:23
+ * @LastEditTime: 2022-04-19 22:42:31
  * @FilePath: \webformanager\src\views\roommanage.vue
  * @Description:
  *
@@ -26,7 +26,7 @@
         </div>
         <div>
           <span>教室描述</span>
-          <el-input type="textarea" autosize placeholder="请输入内容" v-model="roomdetail.adress"> </el-input>
+          <el-input type="textarea" autosize placeholder="请输入内容" v-model="roomdetail.describe"> </el-input>
         </div>
         <div>
           <span>教室图片</span>
@@ -117,10 +117,10 @@ export default {
       endTime: '',
       roomdetail: {
         rid: '',
-        orgid: null,
-        name: null,
-        adress: null,
-        describe: null,
+        orgid: '',
+        name: '',
+        adress: '',
+        describe: '',
         imageurl: [],
         rcanbeusetimes: []
       }
@@ -138,7 +138,13 @@ export default {
     },
     addnewroombtn() {
       this.isshowdetail = true
-      this.roomdetail = {}
+      this.roomdetail.imageurl = []
+      this.roomdetail.rcanbeusetimes = []
+      this.roomdetail.rid = ''
+      this.roomdetail.orgid = JSON.parse(localStorage.getItem('manager')).m2org
+      this.roomdetail.name = ''
+      this.roomdetail.adress = ''
+      this.roomdetail.describe = ''
       this.roomdetail.isnewroom = 1
     },
     clickmask() {
@@ -150,13 +156,15 @@ export default {
     submitbtn(status) {
       if (status) {
         const postdata = this.roomdetail
+        console.log(postdata)
         this.$http.post('/manager/updaterooms', postdata).then((result) => {
+          console.log(result)
           if (result.data.code === 1) {
             this.$message({
               message: result.data.msg,
               type: 'success'
             })
-            this.getallroom(2)
+            this.getallroom(JSON.parse(localStorage.getItem('manager')).m2org)
           } else {
             if (postdata.isnewroom) {
               this.$message.error('添加失败')
@@ -189,7 +197,7 @@ export default {
         } else {
           const fd = new FormData()
           fd.append('file', item)
-          this.$http.post('http://127.0.0.1:5000/api/v1/room/uploadrooomimage', fd).then((result) => {
+          this.$http.post('/room/uploadrooomimage', fd).then((result) => {
             console.log(result)
             if (result.data.code === 1) {
               this.$message({

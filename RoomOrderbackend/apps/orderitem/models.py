@@ -4,7 +4,7 @@
 # @Author: YJR-1100
 # @Date: 2022-03-22 16:06:39
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-04-15 17:17:29
+# @LastEditTime: 2022-04-20 00:05:47
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\apps\orderitem\models.py
 # @Description:
 # @
@@ -24,7 +24,7 @@ class Orderitems(db.Model):
     # 申请人id
     user_id = db.Column(db.Integer, db.ForeignKey('users.uid'), nullable=False)
     # 申请的教室编号
-    room_id = db.Column(db.String(8), db.ForeignKey(
+    room_id = db.Column(db.Integer, db.ForeignKey(
         'rooms.rid'), nullable=False)
     # 教室所属组织
     room2orgid = db.Column(db.Integer, db.ForeignKey(

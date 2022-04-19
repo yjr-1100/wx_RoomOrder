@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-03-21 20:06:11
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-19 15:48:29
+ * @LastEditTime: 2022-04-20 00:12:19
  * @FilePath: \wx_RoomOrder\README.md
  * @Description: 
  * 
@@ -119,4 +119,30 @@
 
 2. 安装python依赖
    
-   ``
+   `python -m pip install -r requirements.txt`
+
+2. 修改 RoomOrderbackend/settings.py 中的数据库连接配置
+
+3. 在 RoomOrderbackend 下创建 wxappsetting.json,添加在微信公众平台找到小程序的 `appid` 和 `appsecret`写在引号中 这个后面向微信服务器发送请求要用
+     ```
+     {
+        "appid":"",
+        "appsecret":""
+     }
+     ```
+
+4. 在 RoomOrderbackend 目录下依次运行下面命令进行数据库的初始化
+    ```
+    python app.py db init
+    python app.py db migrate
+    python app.py db upgrade
+    ```
+
+5. 在 RoomOrderbackend 目录下依次运行 `python app.py runserver` 运行后端
+
+
+## 后台管理系统
+
+1. 在 webformanager 目录下 运行 `npm install` 安装所需依赖
+
+2. 在 webformanager 目录下 运行 `npm run serve` 运行项目
