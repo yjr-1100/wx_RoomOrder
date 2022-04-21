@@ -4,7 +4,7 @@
 # @Author: YJR-1100
 # @Date: 2022-03-22 16:23:55
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-04-19 15:47:59
+# @LastEditTime: 2022-04-21 16:27:14
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\apps\orderitem\api.py
 # @Description:
 # @
@@ -37,11 +37,11 @@ def makeorder():
     print(data)
     myorder = Orderitems()
     try:
-        myorder.odatetime = datetime.now().strftime('%Y-%m-%d %H:%M')
+        myorder.odatetime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         myorder.user_id = data['user_id']
         myorder.room_id = data['room_id']
         myorder.room2orgid = data['room2orgid']
-        myorder.usingtime = str(date.today())+" "+data["usingtime"]
+        myorder.usingtime = data["usingdate"]+" "+data["usingtime"]
         myorder.roomusage = data["roomusage"]
     except Exception as e:
         return falseReturn(msg=e, code=-1)

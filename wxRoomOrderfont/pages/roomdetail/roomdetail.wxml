@@ -21,6 +21,11 @@
         </view>
     </view>
 </view>
+<view class="datechose" hover-class="none" hover-stop-propagation="false">
+    <picker value="{{dateindex}}" range="{{datearray}}" bindchange="bindDateChange">
+        <view class="picker">{{datearray[dateindex]}}</view>
+    </picker>
+</view>
 <view class="timechose" hover-class="none" hover-stop-propagation="false">
     <view class="timechoseitem {{item.status==0?'actived':''}} {{item.status==2?'userchosed':''}}" wx:for="{{canbeuserdtime}}" wx:for-index="index" wx:for-item="item" bindtap="chosetime" data-index="{{index}}">
         <view class="time" hover-class="none" hover-stop-propagation="false">

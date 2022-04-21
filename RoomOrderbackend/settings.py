@@ -4,7 +4,7 @@
 # @Author: YJR-1100
 # @Date: 2022-03-22 14:26:49
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-04-18 19:54:18
+# @LastEditTime: 2022-04-21 15:34:39
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\settings.py
 # @Description:
 # @
@@ -19,7 +19,7 @@ class Config:
     ENV = 'development'
     DEBUG = True
     # 使用的数据库+驱动://user:password@hostip:port/databasename
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://数据库用户名:数据库密码@127.0.0.1:3306/roomorder?charset=utf8'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:123zxc@127.0.0.1:3306/roomorder?charset=utf8'
     #SQLALCHEMY_TRACK_MODIFICATIONS = False
     #SQLALCHEMY_ECHO = True
     WXAPPSETTINGPATH = "./wxappsetting.json"

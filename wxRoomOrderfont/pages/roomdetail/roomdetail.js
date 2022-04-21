@@ -4,8 +4,8 @@
  * @Author: YJR-1100
  * @Date: 2022-03-25 00:00:14
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-19 23:45:35
- * @FilePath: \wx_RoomOrder\wxRoomOrderfont\pages\roomdetail\roomdetail.js
+ * @LastEditTime: 2022-04-21 16:40:22
+ * @FilePath: \wxRoomOrderfont\pages\roomdetail\roomdetail.js
  * @Description: 
  * @
  * @Copyright (c) 2022 by yjr-1100/CSU, All Rights Reserved. 
@@ -26,6 +26,8 @@ Page({
     bodyheight:0,
     roomusage:"",
     isinner:0,
+    datearray:[],
+    dateindex:0,
     //负责人签字的图片 如果不是内部人员需要这个
     imgs: [],
     count: 1,
@@ -43,6 +45,13 @@ Page({
       "status":0
     }
     ]
+  },
+  bindDateChange(e){
+    console.log(e)
+    this.setData({
+      dateindex:e.detail.value
+    })
+    getroomusedtime(this,this.data.room.rid,this.data.datearray[e.detail.value])
   },
   //上传图片
   bindUpload: function (e) {
@@ -126,6 +135,14 @@ deleteImg: function (e) {
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var date = new Date()
+    var datearray = []
+    datearray.push(formatDate(date))
+    date = new Date(date.getTime()+1000*60*60*24)
+    datearray.push(formatDate(date))
+    this.setData({
+      datearray
+    })
     console.log(options)
     var that = this
     const eventChannel = this.getOpenerEventChannel()
@@ -149,8 +166,8 @@ deleteImg: function (e) {
       })
       
       // console.log(...data.data.imageurl)
-
-      // 得到该教室今天已经预约的时间段
+      
+      // 得到该教室对应日期已经预约的时间段，开始默认今天
       getroomusedtime(that,data.data.rid,formatDate(new Date()))
       
     })
@@ -290,7 +307,8 @@ deleteImg: function (e) {
         room2orgid:this.data.room.orgid,
         usingtime:this.data.chosedtime,
         user_id:user.uid,
-        verifyimg:this.data.imgs.join(';')
+        verifyimg:this.data.imgs.join(';'),
+        usingdate:this.data.datearray[this.data.dateindex]
       }
       console.log(data)
       // 发送请求
