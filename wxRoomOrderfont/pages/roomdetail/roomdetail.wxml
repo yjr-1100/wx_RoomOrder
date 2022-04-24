@@ -51,7 +51,8 @@
     </textarea>
 </view>
 <view wx:if="{{isinner != 1}}" class="uplodimagewrap">
-    <view class="txt">签字申请书照片</view>
+    <view class="txt">签字申请表照片</view>
+    <p id="downloadpdf" bindtap="See_download">点此下载申请表</p>
     <view class="imglist">
         <view class="item" wx:for="{{imgs}}" wx:key="item">
             <image src="{{item}}" alt=""></image>

@@ -4,7 +4,7 @@
 # @Author: YJR-1100
 # @Date: 2022-04-13 13:58:40
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-04-20 00:04:53
+# @LastEditTime: 2022-04-24 17:55:16
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\apps\managers\api.py
 # @Description:
 # @
@@ -106,6 +106,7 @@ def updateinnerpersonstate():
 @manager_bp.route('/updaterooms', methods=['POST'])
 def updaterooms():
     data = request.get_json()
+    print(data)
     try:
         isnewroom = data['isnewroom']
     except:
@@ -119,6 +120,8 @@ def updaterooms():
     room.rname = data['name']
     room.raddress = data['adress']
     room.rdescribe = data['describe']
+    room.pdfname = data['pdfname']
+    room.pdfurl = data['pdfurl']
     room.rphotoURL = ';'.join(data['imageurl'])
     room.rcanbeusetimes = ';'.join(data['rcanbeusetimes'])
     try:

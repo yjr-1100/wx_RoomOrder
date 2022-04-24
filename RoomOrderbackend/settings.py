@@ -4,7 +4,7 @@
 # @Author: YJR-1100
 # @Date: 2022-03-22 14:26:49
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-04-21 15:34:39
+# @LastEditTime: 2022-04-24 17:15:13
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\settings.py
 # @Description:
 # @
@@ -45,7 +45,10 @@ class wxappConfig(Config):
 class defaultimage():
     room_UPLOAD_img = os.path.abspath(
         os.path.dirname(__file__))+'\\uploadstatic\\photo\\'
+    room_UPLOAD_pdf = os.path.abspath(
+        os.path.dirname(__file__))+'\\uploadstatic\\pdf\\'
     showroomimgurl = 'http://127.0.0.1:5000/api/v1/room/show/'
+    dowloadroompdf = 'http://127.0.0.1:5000/api/v1/room/getroompdf/'
     swiper_UPLOAD_img = os.path.abspath(
         os.path.dirname(__file__))+'\\uploadstatic\\swiper\\'
     showswiperimgurl = 'http://127.0.0.1:5000/api/v1/swiper/show/'

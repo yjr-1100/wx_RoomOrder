@@ -4,14 +4,14 @@
 # @Author: YJR-1100
 # @Date: 2022-03-22 16:23:51
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-04-19 15:47:11
+# @LastEditTime: 2022-04-24 17:56:48
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\apps\rooms\api.py
 # @Description:
 # @
 # @Copyright (c) 2022 by yjr-1100/CSU, All Rights Reserved.
 #--------------#--------------#
 
-from flask import Blueprint, request,  make_response
+from flask import Blueprint, request,  make_response, send_from_directory
 from common.result import trueReturn, falseReturn
 from apps.rooms.models import Rooms
 from exts import db
@@ -52,6 +52,8 @@ def getrooms():
         rinfo['name'] = room.rname
         rinfo['adress'] = room.raddress
         rinfo['describe'] = room.rdescribe
+        rinfo['pdfname'] = room.pdfname
+        rinfo['pdfurl'] = room.pdfurl
         rinfo['imageurl'] = room.rphotoURL.split(';')
         rinfo['rcanbeusetimes'] = room.rcanbeusetimes.split(';')
         roomlist.append(rinfo)
@@ -103,3 +105,36 @@ def show_photo(filename):
             response = make_response(image_data)
             response.headers['Content-Type'] = 'image/png'
             return response
+
+
+@rooms_bp.route('/uploadroompdf', methods=['POST'])
+def uploadroompdf():
+    pdf = request.files.get('file')
+    print(pdf.filename)
+    file_dir = defaultimage.room_UPLOAD_pdf
+    if not os.path.exists(file_dir):
+        os.makedirs(file_dir)
+
+    if pdf and ('.' in pdf.filename and pdf.filename.rsplit('.', 1)[1] == 'pdf'):
+        ext = pdf.filename.rsplit('.', 1)[1]
+        # oldname = pdf.filename.rsplit('.', 1)[0]
+        new_filename = create_uuid() + '.' + ext
+        file_path = file_dir+new_filename
+        pdf.save(file_path)
+        return trueReturn(msg='上传成功', data={'pdfurl': defaultimage.dowloadroompdf+new_filename})
+    else:
+        return falseReturn(msg='请上传pdf文件')
+
+
+@rooms_bp.route('/getroompdf/<string:filename>', methods=['GET'])
+def getroompdf(filename):
+    # 判断有有无此文件夹
+    path = os.path.isfile(os.path.join(defaultimage.room_UPLOAD_pdf, filename))
+    if path:
+        response_file = send_from_directory(
+            defaultimage.room_UPLOAD_pdf, filename=filename, as_attachment=True, attachment_filename=filename)
+        response_file.headers["Content-Disposition"] = "attachment; filename=%s" % filename.encode(
+        ).decode('latin-1')
+        return response_file
+    else:
+        return falseReturn(msg="文件不存在")

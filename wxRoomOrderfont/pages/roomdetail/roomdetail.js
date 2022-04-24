@@ -4,8 +4,8 @@
  * @Author: YJR-1100
  * @Date: 2022-03-25 00:00:14
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-21 16:40:22
- * @FilePath: \wxRoomOrderfont\pages\roomdetail\roomdetail.js
+ * @LastEditTime: 2022-04-24 20:52:50
+ * @FilePath: \wx_RoomOrder\wxRoomOrderfont\pages\roomdetail\roomdetail.js
  * @Description: 
  * @
  * @Copyright (c) 2022 by yjr-1100/CSU, All Rights Reserved. 
@@ -52,6 +52,44 @@ Page({
       dateindex:e.detail.value
     })
     getroomusedtime(this,this.data.room.rid,this.data.datearray[e.detail.value])
+  },
+  //下载申请表
+  See_download(){
+    if(this.data.room.pdfurl){
+      wx.showLoading({
+        title: '加载中',
+        mask:true
+    })
+      wx.downloadFile({
+        url:this.data.room.pdfurl,
+        success (res) {
+          // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+          wx.hideLoading(); 
+          if (res.statusCode === 200) {
+            console.log(res)
+            var filepath = res.tempFilePath
+            wx.openDocument({
+              filePath: filepath,
+              fileType:'pdf',
+              showMenu:true
+            })
+          }else{
+            wx.showToast({
+                title: "下载失败",
+                icon: "error",
+                duration: 2000
+              })
+          }
+        }
+      })
+    }else{
+      wx.showToast({
+        title: "申请表不存在",
+        icon: "none",
+        duration: 2000
+      })
+    }
+    
   },
   //上传图片
   bindUpload: function (e) {
@@ -162,6 +200,8 @@ deleteImg: function (e) {
         [`room.describe`]:data.data.describe,
         [`room.rid`]:data.data.rid,
         [`room.orgid`]:data.data.orgid,
+        [`room.pdfname`]:data.data.pdfname,
+        [`room.pdfurl`]:data.data.pdfurl,
         rcanbeusetimes:data.data.rcanbeusetimes.sort()
       })
       

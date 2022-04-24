@@ -2,7 +2,7 @@
  * @Author: YJR-1100
  * @Date: 2022-03-21 20:06:11
  * @LastEditors: YJR-1100
- * @LastEditTime: 2022-04-20 00:12:19
+ * @LastEditTime: 2022-04-24 18:00:06
  * @FilePath: \wx_RoomOrder\README.md
  * @Description: 
  * 
@@ -146,3 +146,7 @@
 1. 在 webformanager 目录下 运行 `npm install` 安装所需依赖
 
 2. 在 webformanager 目录下 运行 `npm run serve` 运行项目
+
+## 微信小程序
+
+在开发设置中，将服务器地址添加在IP白名单中

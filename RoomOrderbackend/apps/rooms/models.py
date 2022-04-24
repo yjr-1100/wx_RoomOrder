@@ -4,7 +4,7 @@
 # @Author: YJR-1100
 # @Date: 2022-03-22 14:54:42
 # @LastEditors: YJR-1100
-# @LastEditTime: 2022-04-20 00:04:03
+# @LastEditTime: 2022-04-24 17:35:51
 # @FilePath: \wx_RoomOrder\RoomOrderbackend\apps\rooms\models.py
 # @Description:
 # @
@@ -29,6 +29,9 @@ class Rooms(db.Model):
     # 房间照片地址
     rphotoURL = db.Column(db.String(1024), nullable=True,
                           default="http://imgnotes.jerryfirst.top/noroomphoto.jpeg")
+    # 房间申请表
+    pdfname = db.Column(db.String(1024), nullable=True)
+    pdfurl = db.Column(db.String(1024), nullable=True)
     # 房间可用时间
     rcanbeusetimes = db.Column(
         db.String(512), nullable=True, default="8:00-9:00;")
