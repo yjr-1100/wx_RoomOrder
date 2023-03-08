@@ -179,7 +179,7 @@ def rmmanager():
     print(data)
     try:
         tooken = data['tooken']
-        optmid = data['optm2org']
+        optmid = data['optmid']
     except:
         return falseReturn(msg="登录过期，请重新登录1")
     optmpwd = Managers.query.get(optmid).mpassword
